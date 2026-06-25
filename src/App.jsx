@@ -61,7 +61,7 @@ const INIT = {
 // ══════════════════════════════════════════════
 const sBase = {
   fontFamily: "'Sora','Helvetica Neue',Georgia,sans-serif",
-  color: "#1a1830", fontSize: 13, lineHeight: 1.88,
+  color: "#1a1830", fontSize: 18, lineHeight: 1.88,
 };
 
 // Patrón geométrico Muisca (SVG inline)
@@ -89,13 +89,13 @@ const BrandHeader = ({ f }) => (
       <div>
         <div style={{
           fontFamily: "Orbitron,'Courier New',monospace",
-          fontSize: 28, fontWeight: 900, color: P, letterSpacing: 4, lineHeight: 1
+          fontSize: 38, fontWeight: 900, color: P, letterSpacing: 4, lineHeight: 1
         }}>NODO</div>
-        <div style={{ fontSize: 7.5, letterSpacing: 5.5, color: "#AAA", marginTop: 2, textTransform: "uppercase" }}>
+        <div style={{ fontSize: 11, letterSpacing: 5.5, color: "#AAA", marginTop: 2, textTransform: "uppercase" }}>
           TECH &amp; GROWTH
         </div>
       </div>
-      <div style={{ textAlign: "right", fontSize: 10, color: "#777", lineHeight: 1.95 }}>
+      <div style={{ textAlign: "right", fontSize: 14, color: "#777", lineHeight: 1.95 }}>
         <div style={{ fontWeight: 700, color: "#444" }}>www.conectanodo.com</div>
         <div>{f.repEmail || "hola@conectanodo.com"}</div>
         <div>{f.repPhone || "+57 300 000 0000"}</div>
@@ -112,7 +112,7 @@ const DocFooter = () => (
     display: "flex", justifyContent: "space-between", alignItems: "center"
   }}>
     <div style={{ height: 3, width: 48, background: `linear-gradient(90deg,${P},${PL})`, borderRadius: 2 }} />
-    <div style={{ fontSize: 9, color: "#CCC", letterSpacing: 0.5 }}>
+    <div style={{ fontSize: 13, color: "#CCC", letterSpacing: 0.5 }}>
       www.conectanodo.com · Bogotá D.C., Colombia
     </div>
     <div style={{ height: 3, width: 48, background: `linear-gradient(90deg,${PL},${P})`, borderRadius: 2 }} />
@@ -122,10 +122,10 @@ const DocFooter = () => (
 const Sigs = ({ f, showClient = true }) => (
   <div style={{ display: "flex", gap: 40, marginTop: 32 }}>
     <div style={{ flex: 1, borderTop: "1px solid #AAA", paddingTop: 8 }}>
-      <div style={{ fontSize: 11, color: "#888", marginBottom: 3 }}>Firma</div>
+      <div style={{ fontSize: 15, color: "#888", marginBottom: 3 }}>Firma</div>
       <div style={{ 
         fontFamily: "'Playwrite IS', cursive, 'Brush Script MT', Georgia, serif", 
-        fontSize: 18, 
+        fontSize: 25, 
         color: PD, 
         height: 38, 
         lineHeight: "38px",
@@ -134,13 +134,13 @@ const Sigs = ({ f, showClient = true }) => (
       }}>
         {f.repName || "Representante"}
       </div>
-      <div style={{ fontSize: 13, fontWeight: 700, marginTop: 4 }}>{f.repName || "Representante"}</div>
-      <div style={{ fontSize: 10, color: P, marginTop: 1 }}>Nodo Tech &amp; Growth</div>
-      {f.nit && <div style={{ fontSize: 10, color: "#888" }}>NIT: {f.nit}</div>}
+      <div style={{ fontSize: 18, fontWeight: 700, marginTop: 4 }}>{f.repName || "Representante"}</div>
+      <div style={{ fontSize: 14, color: P, marginTop: 1 }}>Nodo Tech &amp; Growth</div>
+      {f.nit && <div style={{ fontSize: 14, color: "#888" }}>NIT: {f.nit}</div>}
     </div>
     {showClient && (
       <div style={{ flex: 1, borderTop: "1px solid #AAA", paddingTop: 8 }}>
-        <div style={{ fontSize: 11, color: "#888", marginBottom: 3 }}>Firma</div>
+        <div style={{ fontSize: 15, color: "#888", marginBottom: 3 }}>Firma</div>
         {f.signatureClient ? (
           <img 
             src={f.signatureClient} 
@@ -148,13 +148,13 @@ const Sigs = ({ f, showClient = true }) => (
             style={{ height: 42, display: "block", marginBottom: 4, objectFit: "contain" }} 
           />
         ) : (
-          <div style={{ height: 42, display: "flex", alignItems: "center", color: "#AAA", fontSize: 11, fontStyle: "italic" }}>
+          <div style={{ height: 42, display: "flex", alignItems: "center", color: "#AAA", fontSize: 15, fontStyle: "italic" }}>
             Pendiente de firma
           </div>
         )}
-        <div style={{ fontSize: 13, fontWeight: 700, marginTop: f.signatureClient ? 4 : 0 }}>{f.clientName || "Cliente"}</div>
-        {f.clientCompany && <div style={{ fontSize: 10, color: "#555", marginTop: 1 }}>{f.clientCompany}</div>}
-        {f.clientId && <div style={{ fontSize: 10, color: "#888" }}>C.C./NIT: {f.clientId}</div>}
+        <div style={{ fontSize: 18, fontWeight: 700, marginTop: f.signatureClient ? 4 : 0 }}>{f.clientName || "Cliente"}</div>
+        {f.clientCompany && <div style={{ fontSize: 14, color: "#555", marginTop: 1 }}>{f.clientCompany}</div>}
+        {f.clientId && <div style={{ fontSize: 14, color: "#888" }}>C.C./NIT: {f.clientId}</div>}
       </div>
     )}
   </div>
@@ -166,8 +166,8 @@ const Sigs = ({ f, showClient = true }) => (
 const DocBienvenida = ({ f }) => (
   <div style={sBase}>
     <BrandHeader f={f} />
-    <p style={{ color: "#999", fontSize: 11, marginBottom: 10 }}>Bogotá D.C., {f.date}</p>
-    <h2 style={{ fontSize: 17, fontWeight: 700, marginBottom: 4, color: "#0f0d1e" }}>Carta de Bienvenida</h2>
+    <p style={{ color: "#999", fontSize: 15, marginBottom: 10 }}>Bogotá D.C., {f.date}</p>
+    <h2 style={{ fontSize: 23, fontWeight: 700, marginBottom: 4, color: "#0f0d1e" }}>Carta de Bienvenida</h2>
     <div style={{ height: 2, width: 50, background: P, borderRadius: 1, marginBottom: 20 }} />
     <p style={{ marginBottom: 14 }}>
       Estimado/a <strong>{f.clientName || "[Nombre del cliente]"}</strong>,
@@ -245,18 +245,18 @@ const DocPropuesta = ({ f }) => {
       <Slide isCover={true}>
         <div style={{ textAlign: "center" }}>
           <div style={{ fontFamily: "Orbitron,'Courier New',monospace", fontSize: 48, fontWeight: 900, color: P, letterSpacing: 6, marginBottom: 4 }}>NODO</div>
-          <div style={{ fontSize: 12, letterSpacing: 8, color: "#AAA", textTransform: "uppercase", marginBottom: 60 }}>TECH & GROWTH</div>
+          <div style={{ fontSize: 17, letterSpacing: 8, color: "#AAA", textTransform: "uppercase", marginBottom: 60 }}>TECH & GROWTH</div>
           
           <div style={{ height: 4, width: 80, background: P, margin: "0 auto", borderRadius: 2, marginBottom: 30 }} />
           
-          <h1 style={{ fontSize: 32, fontWeight: 700, color: "#0f0d1e", marginBottom: 16 }}>Propuesta Comercial</h1>
-          <h2 style={{ fontSize: 20, color: P, fontWeight: 600, marginBottom: 40 }}>Soluciones para {f.clientNiche || "tu industria"}</h2>
+          <h1 style={{ fontSize: 44, fontWeight: 700, color: "#0f0d1e", marginBottom: 16 }}>Propuesta Comercial</h1>
+          <h2 style={{ fontSize: 27, color: P, fontWeight: 600, marginBottom: 40 }}>Soluciones para {f.clientNiche || "tu industria"}</h2>
           
           <div style={{ background: "#F5F3FF", border: "1px solid #DDD6FE", borderRadius: 8, padding: "20px", display: "inline-block", textAlign: "left", minWidth: 300 }}>
-            <div style={{ color: "#888", fontSize: 12, marginBottom: 4, textTransform: "uppercase", letterSpacing: 1 }}>Preparado para:</div>
-            <div style={{ fontWeight: 700, fontSize: 18, color: "#1a1830" }}>{f.clientName}</div>
-            {f.clientCompany && <div style={{ color: "#555", fontSize: 14 }}>{f.clientCompany}</div>}
-            <div style={{ color: "#999", fontSize: 12, marginTop: 12 }}>{f.date}</div>
+            <div style={{ color: "#888", fontSize: 17, marginBottom: 4, textTransform: "uppercase", letterSpacing: 1 }}>Preparado para:</div>
+            <div style={{ fontWeight: 700, fontSize: 25, color: "#1a1830" }}>{f.clientName}</div>
+            {f.clientCompany && <div style={{ color: "#555", fontSize: 19 }}>{f.clientCompany}</div>}
+            <div style={{ color: "#999", fontSize: 17, marginTop: 12 }}>{f.date}</div>
           </div>
         </div>
       </Slide>
@@ -264,16 +264,16 @@ const DocPropuesta = ({ f }) => {
       {/* DIAPOSITIVA 2: EL DESAFÍO Y LA SOLUCIÓN */}
       <Slide>
         <div style={{ marginTop: 120 }}>
-          <h2 style={{ fontSize: 24, fontWeight: 700, color: "#0f0d1e", marginBottom: 12 }}>El Desafío en {f.clientNiche || "tu sector"}</h2>
+          <h2 style={{ fontSize: 33, fontWeight: 700, color: "#0f0d1e", marginBottom: 12 }}>El Desafío en {f.clientNiche || "tu sector"}</h2>
           <div style={{ height: 3, width: 60, background: P, borderRadius: 2, marginBottom: 24 }} />
-          <p style={{ fontSize: 14, color: "#444", lineHeight: 1.8, marginBottom: 30 }}>
+          <p style={{ fontSize: 19, color: "#444", lineHeight: 1.8, marginBottom: 30 }}>
             Sabemos que destacarse hoy en día es un reto. Tu objetivo es claro: <strong>{f.description}</strong>. Sin embargo, la competencia en el sector de {f.clientNiche || "tu industria"} requiere más que una simple presencia online; requiere un ecosistema digital diseñado para convertir visitantes en clientes reales.
           </p>
 
-          <h2 style={{ fontSize: 24, fontWeight: 700, color: P, marginBottom: 12 }}>Nuestra Solución</h2>
+          <h2 style={{ fontSize: 33, fontWeight: 700, color: P, marginBottom: 12 }}>Nuestra Solución</h2>
           <div style={{ background: "#F5F3FF", border: "1px solid #DDD6FE", borderRadius: 8, padding: 24 }}>
-            <h3 style={{ fontSize: 18, fontWeight: 700, color: "#1a1830", marginBottom: 10 }}>{f.service || "Servicio Estratégico"}</h3>
-            <p style={{ fontSize: 14, color: "#444", lineHeight: 1.8 }}>
+            <h3 style={{ fontSize: 25, fontWeight: 700, color: "#1a1830", marginBottom: 10 }}>{f.service || "Servicio Estratégico"}</h3>
+            <p style={{ fontSize: 19, color: "#444", lineHeight: 1.8 }}>
               En Nodo, implementamos soluciones tecnológicas avanzadas adaptadas a las necesidades específicas de tu negocio. No entregamos "plantillas", construimos la infraestructura operativa que automatizará tu captación de leads y escalará tus ventas en tiempo récord.
             </p>
           </div>
@@ -283,29 +283,29 @@ const DocPropuesta = ({ f }) => {
       {/* DIAPOSITIVA 3: NUESTRO ENFOQUE Y BENEFICIOS */}
       <Slide>
         <div style={{ marginTop: 120 }}>
-          <h2 style={{ fontSize: 24, fontWeight: 700, color: "#0f0d1e", marginBottom: 12 }}>¿Por qué elegir NODO?</h2>
+          <h2 style={{ fontSize: 33, fontWeight: 700, color: "#0f0d1e", marginBottom: 12 }}>¿Por qué elegir NODO?</h2>
           <div style={{ height: 3, width: 60, background: P, borderRadius: 2, marginBottom: 30 }} />
           
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
             <div style={{ padding: 20, border: "1px solid #EEE", borderRadius: 8 }}>
-              <div style={{ fontSize: 32, marginBottom: 12 }}>⚡</div>
-              <h4 style={{ fontSize: 16, fontWeight: 700, marginBottom: 8, color: P }}>Velocidad Récord</h4>
-              <p style={{ fontSize: 12, color: "#555", lineHeight: 1.6 }}>Desarrollo fluido y optimizado. Reducimos los tiempos tradicionales de entrega sin sacrificar calidad gracias a la asistencia de IA.</p>
+              <div style={{ fontSize: 44, marginBottom: 12 }}>⚡</div>
+              <h4 style={{ fontSize: 22, fontWeight: 700, marginBottom: 8, color: P }}>Velocidad Récord</h4>
+              <p style={{ fontSize: 17, color: "#555", lineHeight: 1.6 }}>Desarrollo fluido y optimizado. Reducimos los tiempos tradicionales de entrega sin sacrificar calidad gracias a la asistencia de IA.</p>
             </div>
             <div style={{ padding: 20, border: "1px solid #EEE", borderRadius: 8 }}>
-              <div style={{ fontSize: 32, marginBottom: 12 }}>🎯</div>
-              <h4 style={{ fontSize: 16, fontWeight: 700, marginBottom: 8, color: P }}>Foco en Conversión</h4>
-              <p style={{ fontSize: 12, color: "#555", lineHeight: 1.6 }}>Diseños premium y copys persuasivos enfocados 100% en captar la atención de tu cliente ideal y motivarlo a la compra.</p>
+              <div style={{ fontSize: 44, marginBottom: 12 }}>🎯</div>
+              <h4 style={{ fontSize: 22, fontWeight: 700, marginBottom: 8, color: P }}>Foco en Conversión</h4>
+              <p style={{ fontSize: 17, color: "#555", lineHeight: 1.6 }}>Diseños premium y copys persuasivos enfocados 100% en captar la atención de tu cliente ideal y motivarlo a la compra.</p>
             </div>
             <div style={{ padding: 20, border: "1px solid #EEE", borderRadius: 8 }}>
-              <div style={{ fontSize: 32, marginBottom: 12 }}>💻</div>
-              <h4 style={{ fontSize: 16, fontWeight: 700, marginBottom: 8, color: P }}>Tecnología Escalar</h4>
-              <p style={{ fontSize: 12, color: "#555", lineHeight: 1.6 }}>Código limpio, arquitecturas modernas y rendimiento optimizado para que tu web posicione y cargue de forma inmediata.</p>
+              <div style={{ fontSize: 44, marginBottom: 12 }}>💻</div>
+              <h4 style={{ fontSize: 22, fontWeight: 700, marginBottom: 8, color: P }}>Tecnología Escalar</h4>
+              <p style={{ fontSize: 17, color: "#555", lineHeight: 1.6 }}>Código limpio, arquitecturas modernas y rendimiento optimizado para que tu web posicione y cargue de forma inmediata.</p>
             </div>
             <div style={{ padding: 20, border: "1px solid #EEE", borderRadius: 8 }}>
-              <div style={{ fontSize: 32, marginBottom: 12 }}>🤝</div>
-              <h4 style={{ fontSize: 16, fontWeight: 700, marginBottom: 8, color: P }}>Acompañamiento</h4>
-              <p style={{ fontSize: 12, color: "#555", lineHeight: 1.6 }}>Comunicación directa y transparente. Tu representante estará atento para resolver dudas y ajustar la estrategia cuando sea necesario.</p>
+              <div style={{ fontSize: 44, marginBottom: 12 }}>🤝</div>
+              <h4 style={{ fontSize: 22, fontWeight: 700, marginBottom: 8, color: P }}>Acompañamiento</h4>
+              <p style={{ fontSize: 17, color: "#555", lineHeight: 1.6 }}>Comunicación directa y transparente. Tu representante estará atento para resolver dudas y ajustar la estrategia cuando sea necesario.</p>
             </div>
           </div>
         </div>
@@ -314,11 +314,11 @@ const DocPropuesta = ({ f }) => {
       {/* DIAPOSITIVA 4: ENTREGABLES Y CRONOGRAMA */}
       <Slide>
         <div style={{ marginTop: 120 }}>
-          <h2 style={{ fontSize: 24, fontWeight: 700, color: "#0f0d1e", marginBottom: 12 }}>Entregables del Proyecto</h2>
+          <h2 style={{ fontSize: 33, fontWeight: 700, color: "#0f0d1e", marginBottom: 12 }}>Entregables del Proyecto</h2>
           <div style={{ height: 3, width: 60, background: P, borderRadius: 2, marginBottom: 24 }} />
           
           <div style={{ background: "#F9F9FB", border: "1px solid #EAEAEF", borderRadius: 8, padding: 24, marginBottom: 30 }}>
-            <ul style={{ margin: 0, paddingLeft: 20, fontSize: 14, color: "#333", lineHeight: 2 }}>
+            <ul style={{ margin: 0, paddingLeft: 20, fontSize: 19, color: "#333", lineHeight: 2 }}>
               {[f.deliverable1, f.deliverable2, f.deliverable3].filter(Boolean).map((d, i) => (
                 <li key={i} style={{ marginBottom: 12 }}><strong>{d}</strong></li>
               ))}
@@ -327,19 +327,19 @@ const DocPropuesta = ({ f }) => {
             </ul>
           </div>
 
-          <h2 style={{ fontSize: 20, fontWeight: 700, color: P, marginBottom: 12 }}>Cronograma de Trabajo</h2>
+          <h2 style={{ fontSize: 27, fontWeight: 700, color: P, marginBottom: 12 }}>Cronograma de Trabajo</h2>
           <div style={{ display: "flex", gap: 16 }}>
              <div style={{ flex: 1, padding: 16, background: "#FFF0F2", border: "1px solid #FECDD3", borderRadius: 8 }}>
-               <strong style={{ display: "block", color: "#9F1239", fontSize: 14 }}>1. Onboarding</strong>
-               <span style={{ fontSize: 12, color: "#444" }}>Recepción de requerimientos y recursos visuales.</span>
+               <strong style={{ display: "block", color: "#9F1239", fontSize: 19 }}>1. Onboarding</strong>
+               <span style={{ fontSize: 17, color: "#444" }}>Recepción de requerimientos y recursos visuales.</span>
              </div>
              <div style={{ flex: 1, padding: 16, background: "#F5F3FF", border: "1px solid #DDD6FE", borderRadius: 8 }}>
-               <strong style={{ display: "block", color: P, fontSize: 14 }}>2. Desarrollo</strong>
-               <span style={{ fontSize: 12, color: "#444" }}>Construcción y diseño en {f.duration}.</span>
+               <strong style={{ display: "block", color: P, fontSize: 19 }}>2. Desarrollo</strong>
+               <span style={{ fontSize: 17, color: "#444" }}>Construcción y diseño en {f.duration}.</span>
              </div>
              <div style={{ flex: 1, padding: 16, background: "#F0FDF4", border: "1px solid #86EFAC", borderRadius: 8 }}>
-               <strong style={{ display: "block", color: "#166534", fontSize: 14 }}>3. Lanzamiento</strong>
-               <span style={{ fontSize: 12, color: "#444" }}>Revisión final, ajustes y puesta en producción.</span>
+               <strong style={{ display: "block", color: "#166534", fontSize: 19 }}>3. Lanzamiento</strong>
+               <span style={{ fontSize: 17, color: "#444" }}>Revisión final, ajustes y puesta en producción.</span>
              </div>
           </div>
         </div>
@@ -348,15 +348,15 @@ const DocPropuesta = ({ f }) => {
       {/* DIAPOSITIVA 5: INVERSIÓN Y SIGUIENTES PASOS */}
       <Slide>
         <div style={{ marginTop: 120 }}>
-          <h2 style={{ fontSize: 24, fontWeight: 700, color: "#0f0d1e", marginBottom: 12 }}>Inversión</h2>
+          <h2 style={{ fontSize: 33, fontWeight: 700, color: "#0f0d1e", marginBottom: 12 }}>Inversión</h2>
           <div style={{ height: 3, width: 60, background: P, borderRadius: 2, marginBottom: 30 }} />
           
           <div style={{ border: `2px solid ${P}`, borderRadius: 8, overflow: "hidden", marginBottom: 30 }}>
-            <div style={{ background: P, color: "white", padding: "12px 20px", fontSize: 16, fontWeight: 700 }}>
+            <div style={{ background: P, color: "white", padding: "12px 20px", fontSize: 22, fontWeight: 700 }}>
               Detalle Financiero
             </div>
             <div style={{ padding: 20 }}>
-              <table style={{ width: "100%", fontSize: 14, borderCollapse: "collapse" }}>
+              <table style={{ width: "100%", fontSize: 19, borderCollapse: "collapse" }}>
                 <tbody>
                   {[
                     ["Valor total del proyecto", `${f.currency} $${f.totalValue}`, true],
@@ -375,14 +375,14 @@ const DocPropuesta = ({ f }) => {
                   ))}
                 </tbody>
               </table>
-              <div style={{ fontSize: 11, color: "#555", background: "#F5F3FF", padding: "10px 12px", borderRadius: 6, border: "1px solid #DDD6FE", marginTop: 16 }}>
+              <div style={{ fontSize: 15, color: "#555", background: "#F5F3FF", padding: "10px 12px", borderRadius: 6, border: "1px solid #DDD6FE", marginTop: 16 }}>
                 <strong>Nota:</strong> Los valores no incluyen IVA. Esta propuesta tiene validez de {f.validityDays || "15"} días calendario.
               </div>
             </div>
           </div>
 
-          <h2 style={{ fontSize: 20, fontWeight: 700, color: P, marginBottom: 12 }}>¿Listo para empezar?</h2>
-          <p style={{ fontSize: 14, color: "#444", marginBottom: 30 }}>
+          <h2 style={{ fontSize: 27, fontWeight: 700, color: P, marginBottom: 12 }}>¿Listo para empezar?</h2>
+          <p style={{ fontSize: 19, color: "#444", marginBottom: 30 }}>
             Para dar inicio formal al proyecto, requerimos la aprobación de esta propuesta y el comprobante del pago de anticipo.
           </p>
 
@@ -417,13 +417,13 @@ const DocContrato = ({ f }) => {
     <div style={sBase}>
       <BrandHeader f={f} />
       <h2 style={{
-        fontSize: 14, fontWeight: 700, textTransform: "uppercase",
+        fontSize: 19, fontWeight: 700, textTransform: "uppercase",
         letterSpacing: 2, marginBottom: 4, color: "#0f0d1e"
       }}>
         Contrato de Prestación de Servicios
       </h2>
       <div style={{ height: 2, width: 80, background: P, borderRadius: 1, marginBottom: 20 }} />
-      <p style={{ marginBottom: 14, fontSize: 12 }}>
+      <p style={{ marginBottom: 14, fontSize: 17 }}>
         Entre los suscritos: <strong>Nodo Tech &amp; Growth</strong> (en adelante
         "EL PRESTADOR"), con NIT <strong>{f.nit || "__________"}</strong>, domiciliado
         en Bogotá D.C., representado por <strong>{f.repName}</strong>; y{" "}
@@ -434,13 +434,13 @@ const DocContrato = ({ f }) => {
       </p>
       {clausulas.map(([titulo, texto]) => (
         <div key={titulo} style={{ marginBottom: 11 }}>
-          <div style={{ fontSize: 10, color: P, textTransform: "uppercase", letterSpacing: 0.6, fontWeight: 700 }}>
+          <div style={{ fontSize: 14, color: P, textTransform: "uppercase", letterSpacing: 0.6, fontWeight: 700 }}>
             CLÁUSULA {titulo}
           </div>
-          <p style={{ marginTop: 3, fontSize: 12, color: "#333" }}>{texto}</p>
+          <p style={{ marginTop: 3, fontSize: 17, color: "#333" }}>{texto}</p>
         </div>
       ))}
-      <p style={{ marginTop: 16, marginBottom: 28, fontSize: 12, color: "#555" }}>
+      <p style={{ marginTop: 16, marginBottom: 28, fontSize: 17, color: "#555" }}>
         En señal de aceptación, firman en Bogotá D.C., el {f.date}.
       </p>
       <Sigs f={f} />
@@ -456,7 +456,7 @@ const DocActaInicio = ({ f }) => (
   <div style={sBase}>
     <BrandHeader f={f} />
     <h2 style={{
-      fontSize: 15, fontWeight: 700, textTransform: "uppercase",
+      fontSize: 21, fontWeight: 700, textTransform: "uppercase",
       letterSpacing: 2, marginBottom: 4, color: "#0f0d1e"
     }}>
       Acta de Inicio de Proyecto
@@ -464,7 +464,7 @@ const DocActaInicio = ({ f }) => (
     <div style={{ height: 2, width: 80, background: P, borderRadius: 1, marginBottom: 20 }} />
     <div style={{
       background: "#F5F3FF", borderRadius: 8, padding: 14, marginBottom: 20,
-      display: "grid", gridTemplateColumns: "1fr 1fr", gap: "7px 18px", fontSize: 12
+      display: "grid", gridTemplateColumns: "1fr 1fr", gap: "7px 18px", fontSize: 17
     }}>
       {[
         ["Fecha", f.date],
@@ -477,12 +477,12 @@ const DocActaInicio = ({ f }) => (
         <div key={k}><span style={{ color: "#888" }}>{k}: </span><strong>{v}</strong></div>
       ))}
     </div>
-    <h4 style={{ fontSize: 12, fontWeight: 700, marginBottom: 6, color: "#222" }}>Servicio contratado:</h4>
-    <p style={{ fontSize: 12, color: "#444", marginBottom: 18 }}>
+    <h4 style={{ fontSize: 17, fontWeight: 700, marginBottom: 6, color: "#222" }}>Servicio contratado:</h4>
+    <p style={{ fontSize: 17, color: "#444", marginBottom: 18 }}>
       <strong>{f.service}</strong> — {f.description}
     </p>
-    <h4 style={{ fontSize: 12, fontWeight: 700, marginBottom: 10, color: "#222" }}>Entregables acordados:</h4>
-    <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12, marginBottom: 20 }}>
+    <h4 style={{ fontSize: 17, fontWeight: 700, marginBottom: 10, color: "#222" }}>Entregables acordados:</h4>
+    <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 17, marginBottom: 20 }}>
       <thead>
         <tr style={{ background: P, color: "white" }}>
           <th style={{ padding: "6px 10px", textAlign: "left", fontWeight: 600 }}>#</th>
@@ -500,7 +500,7 @@ const DocActaInicio = ({ f }) => (
         ))}
       </tbody>
     </table>
-    <p style={{ fontSize: 12, color: "#555", marginBottom: 28 }}>
+    <p style={{ fontSize: 17, color: "#555", marginBottom: 28 }}>
       Con la firma del presente documento, ambas partes confirman los términos, fechas y
       entregables acordados, y declaran el <strong>inicio oficial del proyecto</strong>.
     </p>
@@ -516,7 +516,7 @@ const DocActaEntrega = ({ f }) => (
   <div style={sBase}>
     <BrandHeader f={f} />
     <h2 style={{
-      fontSize: 15, fontWeight: 700, textTransform: "uppercase",
+      fontSize: 21, fontWeight: 700, textTransform: "uppercase",
       letterSpacing: 2, marginBottom: 4, color: "#0f0d1e"
     }}>
       Acta de Entrega y Recibido a Satisfacción
@@ -524,7 +524,7 @@ const DocActaEntrega = ({ f }) => (
     <div style={{ height: 2, width: 80, background: "#16A34A", borderRadius: 1, marginBottom: 20 }} />
     <div style={{
       background: "#F0FDF4", border: "1px solid #86EFAC", borderRadius: 8, padding: 14,
-      marginBottom: 20, display: "grid", gridTemplateColumns: "1fr 1fr", gap: "7px 18px", fontSize: 12
+      marginBottom: 20, display: "grid", gridTemplateColumns: "1fr 1fr", gap: "7px 18px", fontSize: 17
     }}>
       {[
         ["Fecha de entrega", f.date],
@@ -535,8 +535,8 @@ const DocActaEntrega = ({ f }) => (
         <div key={k}><span style={{ color: "#888" }}>{k}: </span><strong>{v}</strong></div>
       ))}
     </div>
-    <h4 style={{ fontSize: 12, fontWeight: 700, marginBottom: 10, color: "#222" }}>Entregables completados:</h4>
-    <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12, marginBottom: 20 }}>
+    <h4 style={{ fontSize: 17, fontWeight: 700, marginBottom: 10, color: "#222" }}>Entregables completados:</h4>
+    <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 17, marginBottom: 20 }}>
       <thead>
         <tr style={{ background: "#16A34A", color: "white" }}>
           <th style={{ padding: "6px 10px", textAlign: "left", fontWeight: 600 }}>#</th>
@@ -555,8 +555,8 @@ const DocActaEntrega = ({ f }) => (
       </tbody>
     </table>
     <div style={{ background: "#F5F3FF", border: "1px solid #DDD6FE", borderRadius: 8, padding: 14, marginBottom: 18 }}>
-      <h4 style={{ fontSize: 12, fontWeight: 700, marginBottom: 8, color: "#222" }}>Declaración de satisfacción:</h4>
-      <p style={{ fontSize: 12, color: "#444", lineHeight: 1.8 }}>
+      <h4 style={{ fontSize: 17, fontWeight: 700, marginBottom: 8, color: "#222" }}>Declaración de satisfacción:</h4>
+      <p style={{ fontSize: 17, color: "#444", lineHeight: 1.8 }}>
         Yo, <strong>{f.clientName}</strong>
         {f.clientCompany && `, en representación de ${f.clientCompany},`} declaro
         que he recibido a satisfacción todos los entregables del
@@ -567,7 +567,7 @@ const DocActaEntrega = ({ f }) => (
       </p>
     </div>
     <div style={{ border: "2px dashed #CCC", borderRadius: 6, padding: "12px 14px", marginBottom: 28 }}>
-      <p style={{ fontSize: 11, color: "#888", marginBottom: 8 }}><strong>Observaciones del cliente:</strong></p>
+      <p style={{ fontSize: 15, color: "#888", marginBottom: 8 }}><strong>Observaciones del cliente:</strong></p>
       <div style={{ height: 52 }} />
       <div style={{ borderBottom: "1px solid #DDD" }} />
     </div>
@@ -598,27 +598,27 @@ const DocFactura = ({ f }) => {
       {/* Título + Número */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
         <div>
-          <h2 style={{ fontSize: 17, fontWeight: 700, marginBottom: 4, color: "#0f0d1e", textTransform: "uppercase", letterSpacing: 1 }}>Documento de Cobro</h2>
+          <h2 style={{ fontSize: 23, fontWeight: 700, marginBottom: 4, color: "#0f0d1e", textTransform: "uppercase", letterSpacing: 1 }}>Documento de Cobro</h2>
           <div style={{ height: 2, width: 50, background: P, borderRadius: 1 }} />
         </div>
         <div style={{ background: P, color: "white", borderRadius: 8, padding: "10px 18px", textAlign: "right" }}>
-          <div style={{ fontSize: 9, letterSpacing: 2, opacity: 0.8, textTransform: "uppercase" }}>N° de documento</div>
-          <div style={{ fontFamily: "Orbitron,monospace", fontSize: 20, fontWeight: 900, letterSpacing: 3 }}>#{f.invoiceNum || "001"}</div>
+          <div style={{ fontSize: 13, letterSpacing: 2, opacity: 0.8, textTransform: "uppercase" }}>N° de documento</div>
+          <div style={{ fontFamily: "Orbitron,monospace", fontSize: 27, fontWeight: 900, letterSpacing: 3 }}>#{f.invoiceNum || "001"}</div>
         </div>
       </div>
 
       {/* Info cliente vs emisor */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 20 }}>
-        <div style={{ background: "#F5F3FF", border: "1px solid #DDD6FE", borderRadius: 8, padding: "12px 14px", fontSize: 11, lineHeight: 1.9 }}>
-          <div style={{ fontSize: 8.5, color: P, textTransform: "uppercase", letterSpacing: 1.4, fontWeight: 700, marginBottom: 6 }}>Emitido por</div>
+        <div style={{ background: "#F5F3FF", border: "1px solid #DDD6FE", borderRadius: 8, padding: "12px 14px", fontSize: 15, lineHeight: 1.9 }}>
+          <div style={{ fontSize: 12, color: P, textTransform: "uppercase", letterSpacing: 1.4, fontWeight: 700, marginBottom: 6 }}>Emitido por</div>
           <div style={{ fontWeight: 700, color: "#1a1830" }}>Nodo Tech &amp; Growth</div>
           <div style={{ color: "#555" }}>{f.repName}</div>
           <div style={{ color: "#777" }}>{f.repEmail}</div>
           <div style={{ color: "#777" }}>{f.repPhone}</div>
           {f.nit && <div style={{ color: "#888" }}>NIT: {f.nit}</div>}
         </div>
-        <div style={{ background: "#F5F3FF", border: "1px solid #DDD6FE", borderRadius: 8, padding: "12px 14px", fontSize: 11, lineHeight: 1.9 }}>
-          <div style={{ fontSize: 8.5, color: P, textTransform: "uppercase", letterSpacing: 1.4, fontWeight: 700, marginBottom: 6 }}>Cobrado a</div>
+        <div style={{ background: "#F5F3FF", border: "1px solid #DDD6FE", borderRadius: 8, padding: "12px 14px", fontSize: 15, lineHeight: 1.9 }}>
+          <div style={{ fontSize: 12, color: P, textTransform: "uppercase", letterSpacing: 1.4, fontWeight: 700, marginBottom: 6 }}>Cobrado a</div>
           <div style={{ fontWeight: 700, color: "#1a1830" }}>{f.clientName || "Cliente"}</div>
           {f.clientCompany && <div style={{ color: "#555" }}>{f.clientCompany}</div>}
           <div style={{ color: "#777" }}>{f.clientEmail}</div>
@@ -629,8 +629,8 @@ const DocFactura = ({ f }) => {
       {/* Meta info */}
       <div style={{ display: "flex", gap: 10, marginBottom: 20, flexWrap: "wrap" }}>
         {[{ k: "Fecha de emisión", v: f.date }, { k: "Proyecto", v: f.projectName }, { k: "Servicio", v: f.service }].map(({ k, v }) => (
-          <div key={k} style={{ flex: "1 1 140px", background: "#FAF8FF", border: "1px solid #EDE9FE", borderRadius: 6, padding: "8px 12px", fontSize: 11 }}>
-            <div style={{ color: "#AAA", fontSize: 9, textTransform: "uppercase", letterSpacing: 1, marginBottom: 2 }}>{k}</div>
+          <div key={k} style={{ flex: "1 1 140px", background: "#FAF8FF", border: "1px solid #EDE9FE", borderRadius: 6, padding: "8px 12px", fontSize: 15 }}>
+            <div style={{ color: "#AAA", fontSize: 13, textTransform: "uppercase", letterSpacing: 1, marginBottom: 2 }}>{k}</div>
             <div style={{ fontWeight: 600, color: "#1a1830" }}>{v || "—"}</div>
           </div>
         ))}
@@ -638,14 +638,14 @@ const DocFactura = ({ f }) => {
 
       {/* Tabla de ítems */}
       <div style={{ border: `2px solid ${P}`, borderRadius: 8, overflow: "hidden", marginBottom: 16 }}>
-        <div style={{ background: P, color: "white", padding: "8px 14px", fontSize: 12, fontWeight: 700 }}>📋 Detalle del cobro</div>
-        <table style={{ width: "100%", fontSize: 12, borderCollapse: "collapse" }}>
+        <div style={{ background: P, color: "white", padding: "8px 14px", fontSize: 17, fontWeight: 700 }}>📋 Detalle del cobro</div>
+        <table style={{ width: "100%", fontSize: 17, borderCollapse: "collapse" }}>
           <thead>
             <tr style={{ background: "#F5F3FF" }}>
-              <th style={{ padding: "8px 12px", textAlign: "left", color: "#555", fontWeight: 600, fontSize: 10, textTransform: "uppercase", letterSpacing: 0.5, width: "50%" }}>Descripción</th>
-              <th style={{ padding: "8px 12px", textAlign: "center", color: "#555", fontWeight: 600, fontSize: 10, textTransform: "uppercase", letterSpacing: 0.5 }}>Cant.</th>
-              <th style={{ padding: "8px 12px", textAlign: "right", color: "#555", fontWeight: 600, fontSize: 10, textTransform: "uppercase", letterSpacing: 0.5 }}>Valor unitario</th>
-              <th style={{ padding: "8px 12px", textAlign: "right", color: "#555", fontWeight: 600, fontSize: 10, textTransform: "uppercase", letterSpacing: 0.5 }}>Subtotal</th>
+              <th style={{ padding: "8px 12px", textAlign: "left", color: "#555", fontWeight: 600, fontSize: 14, textTransform: "uppercase", letterSpacing: 0.5, width: "50%" }}>Descripción</th>
+              <th style={{ padding: "8px 12px", textAlign: "center", color: "#555", fontWeight: 600, fontSize: 14, textTransform: "uppercase", letterSpacing: 0.5 }}>Cant.</th>
+              <th style={{ padding: "8px 12px", textAlign: "right", color: "#555", fontWeight: 600, fontSize: 14, textTransform: "uppercase", letterSpacing: 0.5 }}>Valor unitario</th>
+              <th style={{ padding: "8px 12px", textAlign: "right", color: "#555", fontWeight: 600, fontSize: 14, textTransform: "uppercase", letterSpacing: 0.5 }}>Subtotal</th>
             </tr>
           </thead>
           <tbody>
@@ -658,8 +658,8 @@ const DocFactura = ({ f }) => {
               </tr>
             ))}
             <tr style={{ borderTop: `2px solid ${P}`, background: "#F5F3FF" }}>
-              <td colSpan={3} style={{ padding: "10px 12px", textAlign: "right", fontWeight: 700, fontSize: 13, color: "#1a1830" }}>TOTAL A PAGAR</td>
-              <td style={{ padding: "10px 12px", textAlign: "right", fontWeight: 900, fontSize: 15, color: P, fontFamily: "Orbitron,monospace" }}>{f.currency} ${fmt(total)}</td>
+              <td colSpan={3} style={{ padding: "10px 12px", textAlign: "right", fontWeight: 700, fontSize: 18, color: "#1a1830" }}>TOTAL A PAGAR</td>
+              <td style={{ padding: "10px 12px", textAlign: "right", fontWeight: 900, fontSize: 21, color: P, fontFamily: "Orbitron,monospace" }}>{f.currency} ${fmt(total)}</td>
             </tr>
           </tbody>
         </table>
@@ -668,11 +668,11 @@ const DocFactura = ({ f }) => {
       {/* Datos bancarios */}
       {(f.bankName || f.bankAccount) && (
         <div style={{ background: "#0f0d1e", borderRadius: 8, padding: "12px 16px", marginBottom: 16, display: "flex", gap: 24, flexWrap: "wrap" }}>
-          <div style={{ fontSize: 9, color: PL, textTransform: "uppercase", letterSpacing: 1.5, fontWeight: 700, width: "100%", marginBottom: 4 }}>💳 Datos para transferencia</div>
+          <div style={{ fontSize: 13, color: PL, textTransform: "uppercase", letterSpacing: 1.5, fontWeight: 700, width: "100%", marginBottom: 4 }}>💳 Datos para transferencia</div>
           {[{ k: "Banco", v: f.bankName }, { k: "Tipo de cuenta", v: f.bankType }, { k: "Número de cuenta", v: f.bankAccount }].filter(x => x.v).map(({ k, v }) => (
             <div key={k}>
-              <div style={{ fontSize: 9, color: "#888", textTransform: "uppercase", letterSpacing: 0.8 }}>{k}</div>
-              <div style={{ fontSize: 13, fontWeight: 700, color: "white", marginTop: 1 }}>{v}</div>
+              <div style={{ fontSize: 13, color: "#888", textTransform: "uppercase", letterSpacing: 0.8 }}>{k}</div>
+              <div style={{ fontSize: 18, fontWeight: 700, color: "white", marginTop: 1 }}>{v}</div>
             </div>
           ))}
         </div>
@@ -680,7 +680,7 @@ const DocFactura = ({ f }) => {
 
       {/* Nota */}
       {f.invoiceNote && (
-        <div style={{ border: "1px dashed #C4B5FD", borderRadius: 6, padding: "9px 13px", marginBottom: 28, fontSize: 11, color: "#666", fontStyle: "italic" }}>
+        <div style={{ border: "1px dashed #C4B5FD", borderRadius: 6, padding: "9px 13px", marginBottom: 28, fontSize: 15, color: "#666", fontStyle: "italic" }}>
           <strong style={{ color: P, fontStyle: "normal" }}>Nota:</strong> {f.invoiceNote}
         </div>
       )}
@@ -698,7 +698,7 @@ const DocRequerimientos = ({ f }) => (
   <div style={sBase}>
     <BrandHeader f={f} />
     <h2 style={{
-      fontSize: 17, fontWeight: 700, textTransform: "uppercase",
+      fontSize: 23, fontWeight: 700, textTransform: "uppercase",
       letterSpacing: 2, marginBottom: 4, color: "#0f0d1e"
     }}>
       Kit de Bienvenida y Requerimientos
@@ -709,135 +709,15 @@ const DocRequerimientos = ({ f }) => (
       Para nosotros, una página web no es un folleto digital; es la infraestructura operativa que va a automatizar tus ventas. Para cumplir con nuestros tiempos de entrega récord en código limpio, <strong>nuestro cronograma de desarrollo solo inicia una vez hayamos recibido la totalidad de los materiales solicitados en este documento.</strong>
     </p>
 
-    <h3 style={{ fontSize: 14, fontWeight: 700, color: P, marginTop: 24, marginBottom: 10 }}>📅 Esquemas de Entrega según Urgencia</h3>
+        <h3 style={{ fontSize: 20, fontWeight: 700, color: P, marginTop: 33, marginBottom: 14 }}>📅 Esquemas de Entrega</h3>
     
-    <div style={{ background: "#F5F3FF", border: "1px solid #DDD6FE", borderRadius: 8, padding: 14, marginBottom: 12 }}>
-      <h4 style={{ fontSize: 13, fontWeight: 700, marginBottom: 6, color: "#222" }}>Opción A: Flujo Estándar ({f.kitStandardDays || "10 a 15"} Días Hábiles)</h4>
-      <ul style={{ paddingLeft: 20, margin: 0, fontSize: 12, color: "#444" }}>
-        <li style={{ marginBottom: 4 }}><strong>Condición:</strong> El cliente entrega el 100% de la información solicitada en el Kit de Bienvenida en la reunión de Onboarding.</li>
+    <div style={{ background: "#F5F3FF", border: "1px solid #DDD6FE", borderRadius: 8, padding: 19, marginBottom: 33 }}>
+      <h4 style={{ fontSize: 18, fontWeight: 700, marginBottom: 9, color: "#222" }}>Flujo de Desarrollo (15 a 30 Días Hábiles)</h4>
+      <ul style={{ paddingLeft: 27, margin: 0, fontSize: 17, color: "#444" }}>
+        <li style={{ marginBottom: 6 }}><strong>Condición:</strong> El cliente entrega el 100% de la información solicitada en el Kit de Bienvenida en la reunión de Onboarding.</li>
         <li><strong>Ritmo:</strong> Desarrollo fluido y optimizado con asistencia de IA.</li>
       </ul>
     </div>
-
-    <div style={{ background: "#FFF0F2", border: "1px solid #FECDD3", borderRadius: 8, padding: 14, marginBottom: 24 }}>
-      <h4 style={{ fontSize: 13, fontWeight: 700, marginBottom: 6, color: "#9F1239" }}>Opción B: Flujo de Alta Urgencia ({f.kitUrgentDays || "5 a 7"} Días Hábiles)</h4>
-      <ul style={{ paddingLeft: 20, margin: 0, fontSize: 12, color: "#444" }}>
-        <li style={{ marginBottom: 4 }}><strong>Condición:</strong> Requiere un <strong>recargo del {f.kitUrgentSurcharge || "30"}%</strong> sobre el valor base del proyecto.</li>
-        <li><strong>Ritmo:</strong> Prioridad absoluta en el pipeline de desarrollo de NODO. El cliente debe garantizar feedback y aprobaciones de diseño/copys en menos de {f.kitFeedbackHours || "12"} horas hábiles.</li>
-      </ul>
-    </div>
-
-    <h3 style={{ fontSize: 14, fontWeight: 700, color: P, marginTop: 24, marginBottom: 12 }}>📋 Lista de Requerimientos Obligatorios</h3>
-
-    <div style={{ marginBottom: 16 }}>
-      <h4 style={{ fontSize: 13, fontWeight: 700, marginBottom: 8, color: "#222" }}>1. Identidad de Marca y Visuales</h4>
-      <ul style={{ paddingLeft: 20, margin: 0, fontSize: 12, color: "#444" }}>
-        <li style={{ marginBottom: 6 }}><strong>[ ] Logotipo:</strong> Archivo original en alta resolución (preferiblemente en formato vectorial .ai, .svg o .png sin fondo).</li>
-        <li style={{ marginBottom: 6 }}><strong>[ ] Manual de Marca o Colores:</strong> Códigos HEX de tus colores corporativos (Ej: #000000) y tipografías oficiales si las tienes.</li>
-        <li style={{ marginBottom: 6 }}><strong>[ ] Banco de Imágenes/Videos:</strong> Enlace a una carpeta de Google Drive con las fotos de tus productos, instalaciones, retratos profesionales o videos que deban ir en la web. <em>(Si no tienes, indícalo para usar stock premium de alta conversión).</em></li>
-      </ul>
-    </div>
-
-    <div style={{ marginBottom: 16 }}>
-      <h4 style={{ fontSize: 13, fontWeight: 700, marginBottom: 8, color: "#222" }}>2. Contenidos y Estructura Comercial</h4>
-      <ul style={{ paddingLeft: 20, margin: 0, fontSize: 12, color: "#444" }}>
-        <li style={{ marginBottom: 6 }}><strong>[ ] Portafolio de Servicios/Productos:</strong> Documento de texto detallando qué vendes, cuáles son los beneficios principales de cada uno y sus respectivos precios o rangos.</li>
-        <li style={{ marginBottom: 6 }}><strong>[ ] Preguntas Frecuentes (FAQs):</strong> Las 5 preguntas que tus clientes siempre te hacen antes de comprar y las respuestas exactas que les das.</li>
-        <li style={{ marginBottom: 6 }}><strong>[ ] Prueba Social:</strong> Capturas de pantalla o textos de testimonios reales de tus clientes actuales con sus nombres o logos.</li>
-      </ul>
-    </div>
-
-    <div style={{ marginBottom: 24 }}>
-      <h4 style={{ fontSize: 13, fontWeight: 700, marginBottom: 8, color: "#222" }}>3. Accesos Técnicos y Conexiones</h4>
-      <ul style={{ paddingLeft: 20, margin: 0, fontSize: 12, color: "#444" }}>
-        <li style={{ marginBottom: 6 }}><strong>[ ] Dominio y Hosting:</strong> Credenciales de acceso al proveedor donde compraste el nombre de tu web (Ej: GoDaddy, Namecheap) si ya cuentas con uno.</li>
-        <li style={{ marginBottom: 6 }}><strong>[ ] WhatsApp del Negocio:</strong> Número de teléfono exacto que se conectará al Optimizador de Intención para recibir los leads calificados.</li>
-        <li style={{ marginBottom: 6 }}><strong>[ ] Accesos Publicitarios (Si aplica):</strong> Roles de administrador en tu Business Manager de Meta si vas a iniciar la fase de pauta de inmediato con nosotros.</li>
-      </ul>
-    </div>
-
-    <DocFooter />
-  </div>
-);
-
-// ══════════════════════════════════════════════
-// MAPA DE RENDERERS
-// ══════════════════════════════════════════════
-const RENDERERS = {
-  bienvenida: DocBienvenida,
-  propuesta: DocPropuesta,
-  contrato: DocContrato,
-  acta_inicio: DocActaInicio,
-  acta_entrega: DocActaEntrega,
-  factura: DocFactura,
-  requerimientos: DocRequerimientos,
-};
-
-// ══════════════════════════════════════════════
-// COMPONENTES DE FORMULARIO
-// ══════════════════════════════════════════════
-const Field = ({ label, value, onChange, type = "text", placeholder = "" }) => (
-  <div style={{ marginBottom: 10 }}>
-    <label style={{
-      display: "block", fontSize: 9.5, color: PL, marginBottom: 3,
-      textTransform: "uppercase", letterSpacing: 0.9, fontWeight: 600
-    }}>{label}</label>
-    {type === "textarea" ? (
-      <textarea value={value} onChange={e => onChange(e.target.value)}
-        placeholder={placeholder} rows={3}
-        style={{
-          width: "100%", background: "rgba(124,58,237,0.08)",
-          border: `1px solid ${BD}`, borderRadius: 5, color: TX,
-          padding: "7px 9px", fontSize: 12, resize: "vertical", fontFamily: "inherit"
-        }} />
-    ) : (
-      <input type={type} value={value} onChange={e => onChange(e.target.value)}
-        placeholder={placeholder}
-        style={{
-          width: "100%", background: "rgba(124,58,237,0.08)",
-          border: `1px solid ${BD}`, borderRadius: 5, color: TX,
-          padding: "7px 9px", fontSize: 12, fontFamily: "inherit"
-        }} />
-    )}
-  </div>
-);
-
-const Sec = ({ title, children }) => (
-  <div style={{
-    marginBottom: 12, padding: 11, background: "rgba(124,58,237,0.05)",
-    borderRadius: 7, border: `1px solid ${BD}`
-  }}>
-    <div style={{
-      fontSize: 8.5, color: PL, textTransform: "uppercase", letterSpacing: 1.6,
-      fontWeight: 700, marginBottom: 9
-    }}>{title}</div>
-    {children}
-  </div>
-);
-
-// ══════════════════════════════════════════════
-// AuditTrail Component for PDF legal verification
-const AuditTrail = ({ f }) => {
-  if (f.status !== "signed") return null;
-
-  return (
-    <div style={{
-      marginTop: 48,
-      paddingTop: 16,
-      borderTop: "2px dashed #DDD",
-      fontSize: 10,
-      color: "#555",
-      fontFamily: "'Sora',system-ui,sans-serif",
-      pageBreakBefore: "always"
-    }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-        <div style={{ fontWeight: 700, color: P, letterSpacing: 0.5, textTransform: "uppercase", fontSize: 9 }}>
-          🔒 Pista de Auditoría de Firma Electrónica
-        </div>
-        <div style={{ background: "#DCFCE7", color: "#166534", padding: "2px 8px", borderRadius: 12, fontSize: 8, fontWeight: 700 }}>
-          DOCUMENTO FIRMADO Y VERIFICADO
-        </div>
-      </div>
       
       <p style={{ marginBottom: 12, lineHeight: 1.5, color: "#666" }}>
         Este documento ha sido firmado electrónicamente de conformidad con la Ley 527 de 1999 de la República de Colombia. Los metadatos registrados a continuación garantizan la integridad, autenticidad y el no repudio del firmante.
@@ -853,33 +733,33 @@ const AuditTrail = ({ f }) => {
         padding: 12
       }}>
         <div>
-          <span style={{ color: "#888", display: "block", fontSize: 8.5, textTransform: "uppercase" }}>Firmante (Cliente)</span>
+          <span style={{ color: "#888", display: "block", fontSize: 12, textTransform: "uppercase" }}>Firmante (Cliente)</span>
           <strong style={{ color: "#333" }}>{f.clientName}</strong>
-          {f.clientId && <span style={{ display: "block", fontSize: 9 }}>C.C./NIT: {f.clientId}</span>}
-          {f.clientEmail && <span style={{ display: "block", fontSize: 9 }}>Email: {f.clientEmail}</span>}
+          {f.clientId && <span style={{ display: "block", fontSize: 13 }}>C.C./NIT: {f.clientId}</span>}
+          {f.clientEmail && <span style={{ display: "block", fontSize: 13 }}>Email: {f.clientEmail}</span>}
         </div>
         <div>
-          <span style={{ color: "#888", display: "block", fontSize: 8.5, textTransform: "uppercase" }}>Fecha y Hora (Firma)</span>
+          <span style={{ color: "#888", display: "block", fontSize: 12, textTransform: "uppercase" }}>Fecha y Hora (Firma)</span>
           <strong style={{ color: "#333" }}>{f.signedAt ? new Date(f.signedAt).toLocaleString("es-CO", { timeZone: "America/Bogota" }) : "—"}</strong>
-          <span style={{ display: "block", fontSize: 8.5, color: "#888" }}>Zona Horaria: Colombia (COT)</span>
+          <span style={{ display: "block", fontSize: 12, color: "#888" }}>Zona Horaria: Colombia (COT)</span>
         </div>
         <div>
-          <span style={{ color: "#888", display: "block", fontSize: 8.5, textTransform: "uppercase" }}>Dirección IP</span>
+          <span style={{ color: "#888", display: "block", fontSize: 12, textTransform: "uppercase" }}>Dirección IP</span>
           <strong style={{ color: "#333", fontFamily: "monospace" }}>{f.ipAddress || "No registrada"}</strong>
         </div>
         <div>
-          <span style={{ color: "#888", display: "block", fontSize: 8.5, textTransform: "uppercase" }}>Identificador del Documento</span>
-          <strong style={{ color: "#333", fontFamily: "monospace", fontSize: 8.5 }}>{f.documentId || "Local-Preview"}</strong>
+          <span style={{ color: "#888", display: "block", fontSize: 12, textTransform: "uppercase" }}>Identificador del Documento</span>
+          <strong style={{ color: "#333", fontFamily: "monospace", fontSize: 12 }}>{f.documentId || "Local-Preview"}</strong>
         </div>
         <div style={{ gridColumn: "span 2" }}>
-          <span style={{ color: "#888", display: "block", fontSize: 8.5, textTransform: "uppercase" }}>Huella Digital del Navegador (User-Agent)</span>
-          <span style={{ color: "#666", fontSize: 8.5, fontFamily: "monospace", display: "block", wordBreak: "break-all" }}>
+          <span style={{ color: "#888", display: "block", fontSize: 12, textTransform: "uppercase" }}>Huella Digital del Navegador (User-Agent)</span>
+          <span style={{ color: "#666", fontSize: 12, fontFamily: "monospace", display: "block", wordBreak: "break-all" }}>
             {f.userAgent || "No registrado"}
           </span>
         </div>
       </div>
       
-      <div style={{ textAlign: "center", marginTop: 12, fontSize: 8, color: "#AAA" }}>
+      <div style={{ textAlign: "center", marginTop: 12, fontSize: 11, color: "#AAA" }}>
         Generado automáticamente por Nodo Tech & Growth • ID de verificación: {f.documentId}
       </div>
     </div>
@@ -1095,7 +975,7 @@ export default function App() {
           borderRadius: "50%", width: 40, height: 40, animation: "spin 1s linear infinite",
           marginBottom: 16
         }} />
-        <div style={{ fontSize: 14, color: PL }}>Cargando documento seguro...</div>
+        <div style={{ fontSize: 19, color: PL }}>Cargando documento seguro...</div>
         <style dangerouslySetInnerHTML={{__html: `
           @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         `}} />
@@ -1122,14 +1002,14 @@ export default function App() {
             background: "rgba(124,58,237,0.04)"
           }}>
             <div style={{
-              fontFamily: "Orbitron,monospace", fontSize: 22, fontWeight: 900,
+              fontFamily: "Orbitron,monospace", fontSize: 30, fontWeight: 900,
               color: P, letterSpacing: 4, lineHeight: 1,
               textShadow: `0 0 20px rgba(124,58,237,0.5)`
             }}>NODO</div>
-            <div style={{ fontSize: 7, color: MT, letterSpacing: 5, textTransform: "uppercase", marginTop: 2 }}>
+            <div style={{ fontSize: 10, color: MT, letterSpacing: 5, textTransform: "uppercase", marginTop: 2 }}>
               TECH &amp; GROWTH
             </div>
-            <div style={{ fontSize: 10, color: MT, marginTop: 6, letterSpacing: 0.3 }}>
+            <div style={{ fontSize: 14, color: MT, marginTop: 6, letterSpacing: 0.3 }}>
               📄 Kit de Documentos Oficiales
             </div>
           </div>
@@ -1139,7 +1019,7 @@ export default function App() {
             {DOCS.map(d => (
               <button key={d.id} onClick={() => setDoc(d.id)} style={{
                 width: "100%", textAlign: "left", padding: "9px 11px", marginBottom: 3,
-                borderRadius: 7, cursor: "pointer", fontSize: 12,
+                borderRadius: 7, cursor: "pointer", fontSize: 17,
                 background: doc === d.id ? "rgba(124,58,237,0.2)" : "transparent",
                 border: doc === d.id ? `1px solid rgba(124,58,237,0.45)` : "1px solid transparent",
                 color: doc === d.id ? PL : MT, transition: "all 0.15s",
@@ -1202,14 +1082,7 @@ export default function App() {
               </Sec>
             )}
 
-            {needKit && (
-              <Sec title="Opciones del Kit">
-                <Field label="Días Opción Estándar" value={f.kitStandardDays} onChange={set("kitStandardDays")} placeholder="10 a 15" />
-                <Field label="Días Opción Urgente" value={f.kitUrgentDays} onChange={set("kitUrgentDays")} placeholder="5 a 7" />
-                <Field label="Recargo Urgencia (%)" value={f.kitUrgentSurcharge} onChange={set("kitUrgentSurcharge")} placeholder="30" />
-                <Field label="Feedback Urgente (Horas)" value={f.kitFeedbackHours} onChange={set("kitFeedbackHours")} placeholder="12" />
-              </Sec>
-            )}
+            
 
             {needFactura && (
               <>
@@ -1253,7 +1126,7 @@ export default function App() {
                 borderRadius: 8,
                 color: TX
               }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "#10B981", marginBottom: 6 }}>
+                <div style={{ fontSize: 15, fontWeight: 700, color: "#10B981", marginBottom: 6 }}>
                   ✓ ¡Enlace de Firma Creado!
                 </div>
                 <input type="text" readOnly value={generatedSignUrl} style={{
@@ -1263,7 +1136,7 @@ export default function App() {
                   border: "1px solid #555",
                   borderRadius: 4,
                   color: "#FFF",
-                  fontSize: 10,
+                  fontSize: 14,
                   marginBottom: 8
                 }} onClick={e => e.target.select()} />
                 
@@ -1274,7 +1147,7 @@ export default function App() {
                     setTimeout(() => setCopied(false), 2000);
                   }} style={{
                     flex: 1, padding: "6px 0", background: "#10B981", border: "none", borderRadius: 4,
-                    color: "white", fontSize: 10, fontWeight: 700, cursor: "pointer"
+                    color: "white", fontSize: 14, fontWeight: 700, cursor: "pointer"
                   }}>
                     {copied ? "¡Copiado!" : "Copiar Enlace"}
                   </button>
@@ -1282,7 +1155,7 @@ export default function App() {
                   <a href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`Hola, te comparto el documento para tu firma electrónica: ${generatedSignUrl}`)}`}
                      target="_blank" rel="noreferrer" style={{
                        flex: 1, padding: "6px 0", background: "#25D366", border: "none", borderRadius: 4,
-                       color: "white", fontSize: 10, fontWeight: 700, cursor: "pointer", textAlign: "center", textDecoration: "none",
+                       color: "white", fontSize: 14, fontWeight: 700, cursor: "pointer", textAlign: "center", textDecoration: "none",
                        display: "inline-block"
                      }}>
                     WhatsApp
@@ -1291,7 +1164,7 @@ export default function App() {
                 
                 <button onClick={() => setGeneratedSignUrl("")} style={{
                   width: "100%", marginTop: 8, background: "none", border: "none", color: "#888",
-                  fontSize: 9, cursor: "pointer", textDecoration: "underline"
+                  fontSize: 13, cursor: "pointer", textDecoration: "underline"
                 }}>
                   Cerrar
                 </button>
@@ -1307,7 +1180,7 @@ export default function App() {
               width: "100%", padding: "11px 0",
               background: `linear-gradient(135deg,${P},${PD})`,
               border: "none", borderRadius: 8, color: "white",
-              fontSize: 13, fontWeight: 700, cursor: "pointer",
+              fontSize: 18, fontWeight: 700, cursor: "pointer",
               boxShadow: `0 4px 18px rgba(124,58,237,0.4)`,
               letterSpacing: 0.3,
               marginBottom: 8
@@ -1319,14 +1192,14 @@ export default function App() {
               width: "100%", padding: "11px 0",
               background: `linear-gradient(135deg, #10B981, #047857)`,
               border: "none", borderRadius: 8, color: "white",
-              fontSize: 13, fontWeight: 700, cursor: "pointer",
+              fontSize: 18, fontWeight: 700, cursor: "pointer",
               boxShadow: `0 4px 18px rgba(16,185,129,0.3)`,
               letterSpacing: 0.3,
             }}>
               {isSavingDoc ? "Generando Enlace..." : "✍️ Enviar para Firma"}
             </button>
             
-            <p style={{ fontSize: 9, color: MT, textAlign: "center", marginTop: 6 }}>
+            <p style={{ fontSize: 13, color: MT, textAlign: "center", marginTop: 6 }}>
               El cliente podrá firmar digitalmente sin imprimir
             </p>
           </div>
@@ -1350,10 +1223,10 @@ export default function App() {
             alignItems: "center"
           }}>
             <div>
-              <div style={{ fontSize: 10, color: PL, textTransform: "uppercase", letterSpacing: 1.5, fontWeight: 700 }}>
+              <div style={{ fontSize: 14, color: PL, textTransform: "uppercase", letterSpacing: 1.5, fontWeight: 700 }}>
                 Firma Electrónica de Documentos
               </div>
-              <div style={{ fontSize: 16, fontWeight: 900, color: "white", marginTop: 2 }}>
+              <div style={{ fontSize: 22, fontWeight: 900, color: "white", marginTop: 2 }}>
                 {f.status === "signed" ? "✓ Documento Firmado" : "✍️ Firma Pendiente"}
               </div>
             </div>
@@ -1365,7 +1238,7 @@ export default function App() {
                 borderRadius: 6,
                 padding: "8px 16px",
                 fontWeight: 700,
-                fontSize: 12,
+                fontSize: 17,
                 cursor: "pointer",
                 boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
               }}>
@@ -1378,12 +1251,12 @@ export default function App() {
         {/* Etiqueta del documento (Ocultar al imprimir) */}
         {!isClientMode && (
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18 }} className="no-print">
-            <span style={{ fontSize: 18 }}>{DOCS.find(d => d.id === doc)?.icon}</span>
+            <span style={{ fontSize: 25 }}>{DOCS.find(d => d.id === doc)?.icon}</span>
             <div>
-              <div style={{ fontSize: 11, color: "#8B87A8", letterSpacing: 0.5 }}>
+              <div style={{ fontSize: 15, color: "#8B87A8", letterSpacing: 0.5 }}>
                 Vista previa del documento
               </div>
-              <div style={{ fontSize: 14, fontWeight: 700, color: "#1a1830" }}>
+              <div style={{ fontSize: 19, fontWeight: 700, color: "#1a1830" }}>
                 {DOCS.find(d => d.id === doc)?.label}
               </div>
             </div>
@@ -1413,37 +1286,37 @@ export default function App() {
             boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
             color: "#1a1830"
           }}>
-            <h3 style={{ fontSize: 16, fontWeight: 700, color: PD, marginBottom: 4, display: "flex", alignItems: "center", gap: 8 }}>
+            <h3 style={{ fontSize: 22, fontWeight: 700, color: PD, marginBottom: 4, display: "flex", alignItems: "center", gap: 8 }}>
               <span>✍️</span> Completar Firma Electrónica
             </h3>
-            <p style={{ fontSize: 12, color: "#666", marginBottom: 16 }}>
+            <p style={{ fontSize: 17, color: "#666", marginBottom: 16 }}>
               Por favor, verifica tus datos y firma en el recuadro a continuación. Tu firma se estampará en el documento.
             </p>
             
             <form onSubmit={handleSignDocument}>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 14 }}>
                 <div>
-                  <label style={{ display: "block", fontSize: 10, color: "#666", fontWeight: 600, marginBottom: 4 }}>NOMBRE COMPLETO</label>
+                  <label style={{ display: "block", fontSize: 14, color: "#666", fontWeight: 600, marginBottom: 4 }}>NOMBRE COMPLETO</label>
                   <input type="text" required value={clientFullName} onChange={e => setClientFullName(e.target.value)} style={{
-                    width: "100%", padding: "8px 10px", border: "1px solid #CCC", borderRadius: 6, fontSize: 12
+                    width: "100%", padding: "8px 10px", border: "1px solid #CCC", borderRadius: 6, fontSize: 17
                   }} />
                 </div>
                 <div>
-                  <label style={{ display: "block", fontSize: 10, color: "#666", fontWeight: 600, marginBottom: 4 }}>IDENTIFICACIÓN (C.C. / NIT)</label>
+                  <label style={{ display: "block", fontSize: 14, color: "#666", fontWeight: 600, marginBottom: 4 }}>IDENTIFICACIÓN (C.C. / NIT)</label>
                   <input type="text" required value={clientCc} onChange={e => setClientCc(e.target.value)} style={{
-                    width: "100%", padding: "8px 10px", border: "1px solid #CCC", borderRadius: 6, fontSize: 12
+                    width: "100%", padding: "8px 10px", border: "1px solid #CCC", borderRadius: 6, fontSize: 17
                   }} />
                 </div>
               </div>
               <div style={{ marginBottom: 14 }}>
-                <label style={{ display: "block", fontSize: 10, color: "#666", fontWeight: 600, marginBottom: 4 }}>CORREO ELECTRÓNICO</label>
+                <label style={{ display: "block", fontSize: 14, color: "#666", fontWeight: 600, marginBottom: 4 }}>CORREO ELECTRÓNICO</label>
                 <input type="email" required value={clientEmail} onChange={e => setClientEmail(e.target.value)} style={{
-                  width: "100%", padding: "8px 10px", border: "1px solid #CCC", borderRadius: 6, fontSize: 12
+                  width: "100%", padding: "8px 10px", border: "1px solid #CCC", borderRadius: 6, fontSize: 17
                 }} />
               </div>
               
               <div style={{ marginBottom: 16 }}>
-                <label style={{ display: "block", fontSize: 10, color: "#666", fontWeight: 600, marginBottom: 4 }}>DIBUJAR FIRMA</label>
+                <label style={{ display: "block", fontSize: 14, color: "#666", fontWeight: 600, marginBottom: 4 }}>DIBUJAR FIRMA</label>
                 <SignaturePad 
                   onSave={(dataUrl) => setTempSignature(dataUrl)} 
                   onClear={() => setTempSignature("")} 
@@ -1452,7 +1325,7 @@ export default function App() {
 
               <div style={{ display: "flex", gap: 8, alignItems: "flex-start", marginBottom: 20 }}>
                 <input type="checkbox" required id="terms" checked={termsAccepted} onChange={e => setTermsAccepted(e.target.checked)} style={{ marginTop: 2 }} />
-                <label htmlFor="terms" style={{ fontSize: 11, color: "#444", cursor: "pointer", lineHeight: 1.4 }}>
+                <label htmlFor="terms" style={{ fontSize: 15, color: "#444", cursor: "pointer", lineHeight: 1.4 }}>
                   Certifico que la firma dibujada corresponde a mi firma autógrafa y acepto vincularme electrónicamente a este documento según lo establecido en la Ley 527 de 1999.
                 </label>
               </div>
@@ -1461,7 +1334,7 @@ export default function App() {
                 width: "100%", padding: "12px",
                 background: `linear-gradient(135deg, ${P}, ${PD})`,
                 color: "white", border: "none", borderRadius: 8,
-                fontSize: 13, fontWeight: 700, cursor: "pointer",
+                fontSize: 18, fontWeight: 700, cursor: "pointer",
                 boxShadow: "0 4px 14px rgba(124,58,237,0.3)"
               }}>
                 {isSubmittingSignature ? "Guardando y Firmando..." : "Firmar Documento Oficialmente"}
