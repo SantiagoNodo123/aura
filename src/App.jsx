@@ -24,6 +24,7 @@ const DOCS = [
   { id: "acta_inicio", icon: "🚀", label: "Acta de Inicio" },
   { id: "acta_entrega", icon: "✅", label: "Acta de Entrega" },
   { id: "factura", icon: "🧾", label: "Documento de Cobro" },
+  { id: "requerimientos", icon: "📦", label: "Kit & Requerimientos" },
 ];
 
 // ══════════════════════════════════════════════
@@ -36,7 +37,7 @@ const INIT = {
   repName: "Tu nombre completo", repPhone: "+57 300 000 0000",
   repEmail: "hola@conectanodo.com", nit: "",
   clientName: "Nombre del cliente", clientCompany: "Empresa del cliente",
-  clientEmail: "cliente@empresa.com", clientId: "",
+  clientEmail: "cliente@empresa.com", clientId: "", clientNiche: "Odontología Estética",
   date: fechaHoy(), projectName: "Proyecto Nodo",
   service: "Pauta Digital con Meta Ads",
   description: "Gestión y optimización de campañas en Meta (Facebook e Instagram): estrategia de audiencias, creatividades y reportes mensuales de resultados.",
@@ -203,87 +204,189 @@ const DocBienvenida = ({ f }) => (
 );
 
 // ══════════════════════════════════════════════
-// DOCUMENTO 2 — PROPUESTA COMERCIAL
+// DOCUMENTO 2 — PROPUESTA COMERCIAL (DIAPOSITIVAS)
 // ══════════════════════════════════════════════
 const DocPropuesta = ({ f }) => {
   const num = (s) => parseFloat((s || "0").replace(/\./g, "").replace(",", ".")) || 0;
   const fmt = (n) => Math.round(n).toLocaleString("es-CO");
   const total = num(f.totalValue);
   const adv = total * (parseFloat(f.advance || 0) / 100);
-  return (
-    <div style={sBase}>
-      <BrandHeader f={f} />
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
-        <div>
-          <p style={{ color: "#999", fontSize: 11, marginBottom: 6 }}>Bogotá D.C., {f.date}</p>
-          <h2 style={{ fontSize: 17, fontWeight: 700, marginBottom: 4, color: "#0f0d1e" }}>Propuesta Comercial</h2>
-          <div style={{ height: 2, width: 50, background: P, borderRadius: 1 }} />
-        </div>
-        <div style={{
-          background: "#F5F3FF", border: "1px solid #DDD6FE",
-          borderRadius: 6, padding: "10px 14px", fontSize: 11, textAlign: "right"
-        }}>
-          <div style={{ color: "#888", marginBottom: 2 }}>Preparado para:</div>
-          <div style={{ fontWeight: 700 }}>{f.clientName}</div>
-          {f.clientCompany && <div style={{ color: "#777", fontSize: 10 }}>{f.clientCompany}</div>}
-        </div>
-      </div>
 
-      <div style={{ background: "#F5F3FF", border: "1px solid #DDD6FE", borderRadius: 8, padding: 14, marginBottom: 16 }}>
-        <h3 style={{ color: P, fontSize: 13, fontWeight: 700, marginBottom: 8 }}>
-          🎯 {f.service || "Servicio"}
-        </h3>
-        <p style={{ fontSize: 12, color: "#444", lineHeight: 1.75 }}>{f.description}</p>
-      </div>
-
-      {[f.deliverable1, f.deliverable2, f.deliverable3].filter(Boolean).length > 0 && (
-        <div style={{ marginBottom: 16 }}>
-          <h4 style={{ fontSize: 12, fontWeight: 700, marginBottom: 8, color: "#222" }}>Entregables incluidos:</h4>
-          {[f.deliverable1, f.deliverable2, f.deliverable3].filter(Boolean).map((d, i) => (
-            <div key={i} style={{ display: "flex", gap: 8, fontSize: 12, color: "#444", marginBottom: 5, alignItems: "flex-start" }}>
-              <span style={{ color: P, flexShrink: 0, marginTop: 1 }}>◆</span>
-              <span>{d}</span>
-            </div>
-          ))}
+  const Slide = ({ children, isCover = false }) => (
+    <div style={{
+      minHeight: "260mm",
+      padding: "20mm 10mm",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: isCover ? "center" : "flex-start",
+      pageBreakAfter: "always",
+      position: "relative",
+      ...(!isCover && { borderBottom: "1px solid #EEE" })
+    }}>
+      {!isCover && (
+        <div style={{ position: "absolute", top: "10mm", left: "10mm", right: "10mm", opacity: 0.8 }}>
+          <BrandHeader f={f} />
         </div>
       )}
-
-      <div style={{ border: `2px solid ${P}`, borderRadius: 8, overflow: "hidden", marginBottom: 16 }}>
-        <div style={{ background: P, color: "white", padding: "8px 14px", fontSize: 12, fontWeight: 700 }}>
-          💰 Inversión y Facturación
+      {children}
+      {!isCover && (
+        <div style={{ position: "absolute", bottom: "10mm", left: "10mm", width: "calc(100% - 20mm)" }}>
+          <DocFooter />
         </div>
-        <div style={{ padding: 14 }}>
-          <table style={{ width: "100%", fontSize: 12, borderCollapse: "collapse" }}>
-            <tbody>
-              {[
-                ["Valor total del servicio", `${f.currency} $${f.totalValue}`, true],
-                [`Anticipo requerido (${f.advance}%)`, `${f.currency} $${fmt(adv)}`, false],
-                ["Duración del proyecto", f.duration, false],
-              ].map(([k, v, bold]) => (
-                <tr key={k} style={{ borderBottom: "1px solid #F0ECFF" }}>
-                  <td style={{ padding: "7px 0", color: "#555" }}>{k}</td>
-                  <td style={{
-                    padding: "7px 0", textAlign: "right",
-                    fontWeight: bold ? 700 : 500, fontSize: bold ? 14 : 12,
-                    color: bold ? "#1a1830" : P
-                  }}>{v}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div style={{ fontSize: 11, color: "#555", background: "#F5F3FF", padding: "10px 12px", borderRadius: 6, border: "1px solid #DDD6FE" }}>
-            <strong>Facturación sin IVA:</strong> Los valores indicados no incluyen el Impuesto sobre las Ventas (IVA), dado que el prestador del servicio pertenece al régimen de no responsables de IVA. Se emitirá el documento de cobro equivalente según la normativa vigente.
+      )}
+    </div>
+  );
+
+  return (
+    <div style={sBase}>
+      {/* DIAPOSITIVA 1: PORTADA */}
+      <Slide isCover={true}>
+        <div style={{ textAlign: "center" }}>
+          <div style={{ fontFamily: "Orbitron,'Courier New',monospace", fontSize: 48, fontWeight: 900, color: P, letterSpacing: 6, marginBottom: 4 }}>NODO</div>
+          <div style={{ fontSize: 12, letterSpacing: 8, color: "#AAA", textTransform: "uppercase", marginBottom: 60 }}>TECH & GROWTH</div>
+          
+          <div style={{ height: 4, width: 80, background: P, margin: "0 auto", borderRadius: 2, marginBottom: 30 }} />
+          
+          <h1 style={{ fontSize: 32, fontWeight: 700, color: "#0f0d1e", marginBottom: 16 }}>Propuesta Comercial</h1>
+          <h2 style={{ fontSize: 20, color: P, fontWeight: 600, marginBottom: 40 }}>Soluciones para {f.clientNiche || "tu industria"}</h2>
+          
+          <div style={{ background: "#F5F3FF", border: "1px solid #DDD6FE", borderRadius: 8, padding: "20px", display: "inline-block", textAlign: "left", minWidth: 300 }}>
+            <div style={{ color: "#888", fontSize: 12, marginBottom: 4, textTransform: "uppercase", letterSpacing: 1 }}>Preparado para:</div>
+            <div style={{ fontWeight: 700, fontSize: 18, color: "#1a1830" }}>{f.clientName}</div>
+            {f.clientCompany && <div style={{ color: "#555", fontSize: 14 }}>{f.clientCompany}</div>}
+            <div style={{ color: "#999", fontSize: 12, marginTop: 12 }}>{f.date}</div>
           </div>
         </div>
-      </div>
+      </Slide>
 
-      <p style={{ fontSize: 10, color: "#AAA", fontStyle: "italic", marginBottom: 28 }}>
-        ✱ Esta propuesta tiene validez de {f.validityDays || "15"} días calendario desde su emisión.
-        Precios en {f.currency === "USD" ? "dólares americanos (USD)" : "pesos colombianos (COP)"}.
-      </p>
+      {/* DIAPOSITIVA 2: EL DESAFÍO Y LA SOLUCIÓN */}
+      <Slide>
+        <div style={{ marginTop: 120 }}>
+          <h2 style={{ fontSize: 24, fontWeight: 700, color: "#0f0d1e", marginBottom: 12 }}>El Desafío en {f.clientNiche || "tu sector"}</h2>
+          <div style={{ height: 3, width: 60, background: P, borderRadius: 2, marginBottom: 24 }} />
+          <p style={{ fontSize: 14, color: "#444", lineHeight: 1.8, marginBottom: 30 }}>
+            Sabemos que destacarse hoy en día es un reto. Tu objetivo es claro: <strong>{f.description}</strong>. Sin embargo, la competencia en el sector de {f.clientNiche || "tu industria"} requiere más que una simple presencia online; requiere un ecosistema digital diseñado para convertir visitantes en clientes reales.
+          </p>
 
-      <Sigs f={f} />
-      <DocFooter />
+          <h2 style={{ fontSize: 24, fontWeight: 700, color: P, marginBottom: 12 }}>Nuestra Solución</h2>
+          <div style={{ background: "#F5F3FF", border: "1px solid #DDD6FE", borderRadius: 8, padding: 24 }}>
+            <h3 style={{ fontSize: 18, fontWeight: 700, color: "#1a1830", marginBottom: 10 }}>{f.service || "Servicio Estratégico"}</h3>
+            <p style={{ fontSize: 14, color: "#444", lineHeight: 1.8 }}>
+              En Nodo, implementamos soluciones tecnológicas avanzadas adaptadas a las necesidades específicas de tu negocio. No entregamos "plantillas", construimos la infraestructura operativa que automatizará tu captación de leads y escalará tus ventas en tiempo récord.
+            </p>
+          </div>
+        </div>
+      </Slide>
+
+      {/* DIAPOSITIVA 3: NUESTRO ENFOQUE Y BENEFICIOS */}
+      <Slide>
+        <div style={{ marginTop: 120 }}>
+          <h2 style={{ fontSize: 24, fontWeight: 700, color: "#0f0d1e", marginBottom: 12 }}>¿Por qué elegir NODO?</h2>
+          <div style={{ height: 3, width: 60, background: P, borderRadius: 2, marginBottom: 30 }} />
+          
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+            <div style={{ padding: 20, border: "1px solid #EEE", borderRadius: 8 }}>
+              <div style={{ fontSize: 32, marginBottom: 12 }}>⚡</div>
+              <h4 style={{ fontSize: 16, fontWeight: 700, marginBottom: 8, color: P }}>Velocidad Récord</h4>
+              <p style={{ fontSize: 12, color: "#555", lineHeight: 1.6 }}>Desarrollo fluido y optimizado. Reducimos los tiempos tradicionales de entrega sin sacrificar calidad gracias a la asistencia de IA.</p>
+            </div>
+            <div style={{ padding: 20, border: "1px solid #EEE", borderRadius: 8 }}>
+              <div style={{ fontSize: 32, marginBottom: 12 }}>🎯</div>
+              <h4 style={{ fontSize: 16, fontWeight: 700, marginBottom: 8, color: P }}>Foco en Conversión</h4>
+              <p style={{ fontSize: 12, color: "#555", lineHeight: 1.6 }}>Diseños premium y copys persuasivos enfocados 100% en captar la atención de tu cliente ideal y motivarlo a la compra.</p>
+            </div>
+            <div style={{ padding: 20, border: "1px solid #EEE", borderRadius: 8 }}>
+              <div style={{ fontSize: 32, marginBottom: 12 }}>💻</div>
+              <h4 style={{ fontSize: 16, fontWeight: 700, marginBottom: 8, color: P }}>Tecnología Escalar</h4>
+              <p style={{ fontSize: 12, color: "#555", lineHeight: 1.6 }}>Código limpio, arquitecturas modernas y rendimiento optimizado para que tu web posicione y cargue de forma inmediata.</p>
+            </div>
+            <div style={{ padding: 20, border: "1px solid #EEE", borderRadius: 8 }}>
+              <div style={{ fontSize: 32, marginBottom: 12 }}>🤝</div>
+              <h4 style={{ fontSize: 16, fontWeight: 700, marginBottom: 8, color: P }}>Acompañamiento</h4>
+              <p style={{ fontSize: 12, color: "#555", lineHeight: 1.6 }}>Comunicación directa y transparente. Tu representante estará atento para resolver dudas y ajustar la estrategia cuando sea necesario.</p>
+            </div>
+          </div>
+        </div>
+      </Slide>
+
+      {/* DIAPOSITIVA 4: ENTREGABLES Y CRONOGRAMA */}
+      <Slide>
+        <div style={{ marginTop: 120 }}>
+          <h2 style={{ fontSize: 24, fontWeight: 700, color: "#0f0d1e", marginBottom: 12 }}>Entregables del Proyecto</h2>
+          <div style={{ height: 3, width: 60, background: P, borderRadius: 2, marginBottom: 24 }} />
+          
+          <div style={{ background: "#F9F9FB", border: "1px solid #EAEAEF", borderRadius: 8, padding: 24, marginBottom: 30 }}>
+            <ul style={{ margin: 0, paddingLeft: 20, fontSize: 14, color: "#333", lineHeight: 2 }}>
+              {[f.deliverable1, f.deliverable2, f.deliverable3].filter(Boolean).map((d, i) => (
+                <li key={i} style={{ marginBottom: 12 }}><strong>{d}</strong></li>
+              ))}
+              <li style={{ marginBottom: 12, color: "#666" }}>Optimización técnica y SEO básico en toda la estructura.</li>
+              <li style={{ marginBottom: 12, color: "#666" }}>Integración de analítica y conexión con canales de contacto.</li>
+            </ul>
+          </div>
+
+          <h2 style={{ fontSize: 20, fontWeight: 700, color: P, marginBottom: 12 }}>Cronograma de Trabajo</h2>
+          <div style={{ display: "flex", gap: 16 }}>
+             <div style={{ flex: 1, padding: 16, background: "#FFF0F2", border: "1px solid #FECDD3", borderRadius: 8 }}>
+               <strong style={{ display: "block", color: "#9F1239", fontSize: 14 }}>1. Onboarding</strong>
+               <span style={{ fontSize: 12, color: "#444" }}>Recepción de requerimientos y recursos visuales.</span>
+             </div>
+             <div style={{ flex: 1, padding: 16, background: "#F5F3FF", border: "1px solid #DDD6FE", borderRadius: 8 }}>
+               <strong style={{ display: "block", color: P, fontSize: 14 }}>2. Desarrollo</strong>
+               <span style={{ fontSize: 12, color: "#444" }}>Construcción y diseño en {f.duration}.</span>
+             </div>
+             <div style={{ flex: 1, padding: 16, background: "#F0FDF4", border: "1px solid #86EFAC", borderRadius: 8 }}>
+               <strong style={{ display: "block", color: "#166534", fontSize: 14 }}>3. Lanzamiento</strong>
+               <span style={{ fontSize: 12, color: "#444" }}>Revisión final, ajustes y puesta en producción.</span>
+             </div>
+          </div>
+        </div>
+      </Slide>
+
+      {/* DIAPOSITIVA 5: INVERSIÓN Y SIGUIENTES PASOS */}
+      <Slide>
+        <div style={{ marginTop: 120 }}>
+          <h2 style={{ fontSize: 24, fontWeight: 700, color: "#0f0d1e", marginBottom: 12 }}>Inversión</h2>
+          <div style={{ height: 3, width: 60, background: P, borderRadius: 2, marginBottom: 30 }} />
+          
+          <div style={{ border: `2px solid ${P}`, borderRadius: 8, overflow: "hidden", marginBottom: 30 }}>
+            <div style={{ background: P, color: "white", padding: "12px 20px", fontSize: 16, fontWeight: 700 }}>
+              Detalle Financiero
+            </div>
+            <div style={{ padding: 20 }}>
+              <table style={{ width: "100%", fontSize: 14, borderCollapse: "collapse" }}>
+                <tbody>
+                  {[
+                    ["Valor total del proyecto", `${f.currency} $${f.totalValue}`, true],
+                    [`Anticipo inicial para arrancar (${f.advance}%)`, `${f.currency} $${fmt(adv)}`, false],
+                    ["Saldo restante contra entrega", `${f.currency} $${fmt(total - adv)}`, false],
+                    ["Tiempo de entrega estimado", f.duration, false],
+                  ].map(([k, v, bold]) => (
+                    <tr key={k} style={{ borderBottom: "1px solid #F0ECFF" }}>
+                      <td style={{ padding: "12px 0", color: "#555" }}>{k}</td>
+                      <td style={{
+                        padding: "12px 0", textAlign: "right",
+                        fontWeight: bold ? 700 : 500, fontSize: bold ? 18 : 14,
+                        color: bold ? "#1a1830" : P
+                      }}>{v}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <div style={{ fontSize: 11, color: "#555", background: "#F5F3FF", padding: "10px 12px", borderRadius: 6, border: "1px solid #DDD6FE", marginTop: 16 }}>
+                <strong>Nota:</strong> Los valores no incluyen IVA. Esta propuesta tiene validez de {f.validityDays || "15"} días calendario.
+              </div>
+            </div>
+          </div>
+
+          <h2 style={{ fontSize: 20, fontWeight: 700, color: P, marginBottom: 12 }}>¿Listo para empezar?</h2>
+          <p style={{ fontSize: 14, color: "#444", marginBottom: 30 }}>
+            Para dar inicio formal al proyecto, requerimos la aprobación de esta propuesta y el comprobante del pago de anticipo.
+          </p>
+
+          <Sigs f={f} showClient={true} />
+        </div>
+      </Slide>
     </div>
   );
 };
@@ -587,6 +690,75 @@ const DocFactura = ({ f }) => {
 };
 
 // ══════════════════════════════════════════════
+// DOCUMENTO 7 — KIT DE BIENVENIDA Y REQUERIMIENTOS
+// ══════════════════════════════════════════════
+const DocRequerimientos = ({ f }) => (
+  <div style={sBase}>
+    <BrandHeader f={f} />
+    <h2 style={{
+      fontSize: 17, fontWeight: 700, textTransform: "uppercase",
+      letterSpacing: 2, marginBottom: 4, color: "#0f0d1e"
+    }}>
+      Kit de Bienvenida y Requerimientos
+    </h2>
+    <div style={{ height: 2, width: 80, background: P, borderRadius: 1, marginBottom: 20 }} />
+    
+    <p style={{ marginBottom: 14 }}>
+      Para nosotros, una página web no es un folleto digital; es la infraestructura operativa que va a automatizar tus ventas. Para cumplir con nuestros tiempos de entrega récord en código limpio, <strong>nuestro cronograma de desarrollo solo inicia una vez hayamos recibido la totalidad de los materiales solicitados en este documento.</strong>
+    </p>
+
+    <h3 style={{ fontSize: 14, fontWeight: 700, color: P, marginTop: 24, marginBottom: 10 }}>📅 Esquemas de Entrega según Urgencia</h3>
+    
+    <div style={{ background: "#F5F3FF", border: "1px solid #DDD6FE", borderRadius: 8, padding: 14, marginBottom: 12 }}>
+      <h4 style={{ fontSize: 13, fontWeight: 700, marginBottom: 6, color: "#222" }}>Opción A: Flujo Estándar (10 a 15 Días Hábiles)</h4>
+      <ul style={{ paddingLeft: 20, margin: 0, fontSize: 12, color: "#444" }}>
+        <li style={{ marginBottom: 4 }}><strong>Condición:</strong> El cliente entrega el 100% de la información solicitada en el Kit de Bienvenida en la reunión de Onboarding.</li>
+        <li><strong>Ritmo:</strong> Desarrollo fluido y optimizado con asistencia de IA.</li>
+      </ul>
+    </div>
+
+    <div style={{ background: "#FFF0F2", border: "1px solid #FECDD3", borderRadius: 8, padding: 14, marginBottom: 24 }}>
+      <h4 style={{ fontSize: 13, fontWeight: 700, marginBottom: 6, color: "#9F1239" }}>Opción B: Flujo de Alta Urgencia (5 a 7 Días Hábiles)</h4>
+      <ul style={{ paddingLeft: 20, margin: 0, fontSize: 12, color: "#444" }}>
+        <li style={{ marginBottom: 4 }}><strong>Condición:</strong> Requiere un <strong>recargo del 30%</strong> sobre el valor base del proyecto.</li>
+        <li><strong>Ritmo:</strong> Prioridad absoluta en el pipeline de desarrollo de NODO. El cliente debe garantizar feedback y aprobaciones de diseño/copys en menos de 12 horas hábiles.</li>
+      </ul>
+    </div>
+
+    <h3 style={{ fontSize: 14, fontWeight: 700, color: P, marginTop: 24, marginBottom: 12 }}>📋 Lista de Requerimientos Obligatorios</h3>
+
+    <div style={{ marginBottom: 16 }}>
+      <h4 style={{ fontSize: 13, fontWeight: 700, marginBottom: 8, color: "#222" }}>1. Identidad de Marca y Visuales</h4>
+      <ul style={{ paddingLeft: 20, margin: 0, fontSize: 12, color: "#444" }}>
+        <li style={{ marginBottom: 6 }}><strong>[ ] Logotipo:</strong> Archivo original en alta resolución (preferiblemente en formato vectorial .ai, .svg o .png sin fondo).</li>
+        <li style={{ marginBottom: 6 }}><strong>[ ] Manual de Marca o Colores:</strong> Códigos HEX de tus colores corporativos (Ej: #000000) y tipografías oficiales si las tienes.</li>
+        <li style={{ marginBottom: 6 }}><strong>[ ] Banco de Imágenes/Videos:</strong> Enlace a una carpeta de Google Drive con las fotos de tus productos, instalaciones, retratos profesionales o videos que deban ir en la web. <em>(Si no tienes, indícalo para usar stock premium de alta conversión).</em></li>
+      </ul>
+    </div>
+
+    <div style={{ marginBottom: 16 }}>
+      <h4 style={{ fontSize: 13, fontWeight: 700, marginBottom: 8, color: "#222" }}>2. Contenidos y Estructura Comercial</h4>
+      <ul style={{ paddingLeft: 20, margin: 0, fontSize: 12, color: "#444" }}>
+        <li style={{ marginBottom: 6 }}><strong>[ ] Portafolio de Servicios/Productos:</strong> Documento de texto detallando qué vendes, cuáles son los beneficios principales de cada uno y sus respectivos precios o rangos.</li>
+        <li style={{ marginBottom: 6 }}><strong>[ ] Preguntas Frecuentes (FAQs):</strong> Las 5 preguntas que tus clientes siempre te hacen antes de comprar y las respuestas exactas que les das.</li>
+        <li style={{ marginBottom: 6 }}><strong>[ ] Prueba Social:</strong> Capturas de pantalla o textos de testimonios reales de tus clientes actuales con sus nombres o logos.</li>
+      </ul>
+    </div>
+
+    <div style={{ marginBottom: 24 }}>
+      <h4 style={{ fontSize: 13, fontWeight: 700, marginBottom: 8, color: "#222" }}>3. Accesos Técnicos y Conexiones</h4>
+      <ul style={{ paddingLeft: 20, margin: 0, fontSize: 12, color: "#444" }}>
+        <li style={{ marginBottom: 6 }}><strong>[ ] Dominio y Hosting:</strong> Credenciales de acceso al proveedor donde compraste el nombre de tu web (Ej: GoDaddy, Namecheap) si ya cuentas con uno.</li>
+        <li style={{ marginBottom: 6 }}><strong>[ ] WhatsApp del Negocio:</strong> Número de teléfono exacto que se conectará al Optimizador de Intención para recibir los leads calificados.</li>
+        <li style={{ marginBottom: 6 }}><strong>[ ] Accesos Publicitarios (Si aplica):</strong> Roles de administrador en tu Business Manager de Meta si vas a iniciar la fase de pauta de inmediato con nosotros.</li>
+      </ul>
+    </div>
+
+    <DocFooter />
+  </div>
+);
+
+// ══════════════════════════════════════════════
 // MAPA DE RENDERERS
 // ══════════════════════════════════════════════
 const RENDERERS = {
@@ -596,6 +768,7 @@ const RENDERERS = {
   acta_inicio: DocActaInicio,
   acta_entrega: DocActaEntrega,
   factura: DocFactura,
+  requerimientos: DocRequerimientos,
 };
 
 // ══════════════════════════════════════════════
@@ -998,6 +1171,8 @@ export default function App() {
               <Sec title="Proyecto">
                 {["acta_inicio", "acta_entrega"].includes(doc) &&
                   <Field label="Nombre del proyecto" value={f.projectName} onChange={set("projectName")} />}
+                {doc === "propuesta" &&
+                  <Field label="Nicho / Industria" value={f.clientNiche} onChange={set("clientNiche")} placeholder="Ej. Odontología, Inmobiliaria" />}
                 <Field label="Servicio" value={f.service} onChange={set("service")} />
                 <Field label="Descripción" value={f.description} onChange={set("description")} type="textarea" />
                 <Field label="Entregable 1" value={f.deliverable1} onChange={set("deliverable1")} />
