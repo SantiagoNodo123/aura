@@ -709,15 +709,127 @@ const DocRequerimientos = ({ f }) => (
       Para nosotros, una página web no es un folleto digital; es la infraestructura operativa que va a automatizar tus ventas. Para cumplir con nuestros tiempos de entrega récord en código limpio, <strong>nuestro cronograma de desarrollo solo inicia una vez hayamos recibido la totalidad de los materiales solicitados en este documento.</strong>
     </p>
 
-        <h3 style={{ fontSize: 20, fontWeight: 700, color: P, marginTop: 33, marginBottom: 14 }}>📅 Esquemas de Entrega</h3>
+    <h3 style={{ fontSize: 19, fontWeight: 700, color: P, marginTop: 24, marginBottom: 10 }}>📅 Esquemas de Entrega</h3>
     
-    <div style={{ background: "#F5F3FF", border: "1px solid #DDD6FE", borderRadius: 8, padding: 19, marginBottom: 33 }}>
-      <h4 style={{ fontSize: 18, fontWeight: 700, marginBottom: 9, color: "#222" }}>Flujo de Desarrollo (15 a 30 Días Hábiles)</h4>
-      <ul style={{ paddingLeft: 27, margin: 0, fontSize: 17, color: "#444" }}>
-        <li style={{ marginBottom: 6 }}><strong>Condición:</strong> El cliente entrega el 100% de la información solicitada en el Kit de Bienvenida en la reunión de Onboarding.</li>
+    <div style={{ background: "#F5F3FF", border: "1px solid #DDD6FE", borderRadius: 8, padding: 14, marginBottom: 24 }}>
+      <h4 style={{ fontSize: 18, fontWeight: 700, marginBottom: 6, color: "#222" }}>Flujo de Desarrollo (15 a 30 Días Hábiles)</h4>
+      <ul style={{ paddingLeft: 20, margin: 0, fontSize: 17, color: "#444" }}>
+        <li style={{ marginBottom: 4 }}><strong>Condición:</strong> El cliente entrega el 100% de la información solicitada en el Kit de Bienvenida en la reunión de Onboarding.</li>
         <li><strong>Ritmo:</strong> Desarrollo fluido y optimizado con asistencia de IA.</li>
       </ul>
     </div>
+
+    <h3 style={{ fontSize: 19, fontWeight: 700, color: P, marginTop: 24, marginBottom: 12 }}>📋 Lista de Requerimientos Obligatorios</h3>
+
+    <div style={{ marginBottom: 16 }}>
+      <h4 style={{ fontSize: 18, fontWeight: 700, marginBottom: 8, color: "#222" }}>1. Identidad de Marca y Visuales</h4>
+      <ul style={{ paddingLeft: 20, margin: 0, fontSize: 17, color: "#444" }}>
+        <li style={{ marginBottom: 6 }}><strong>[ ] Logotipo:</strong> Archivo original en alta resolución (preferiblemente en formato vectorial .ai, .svg o .png sin fondo).</li>
+        <li style={{ marginBottom: 6 }}><strong>[ ] Manual de Marca o Colores:</strong> Códigos HEX de tus colores corporativos (Ej: #000000) y tipografías oficiales si las tienes.</li>
+        <li style={{ marginBottom: 6 }}><strong>[ ] Banco de Imágenes/Videos:</strong> Enlace a una carpeta de Google Drive con las fotos de tus productos, instalaciones, retratos profesionales o videos que deban ir en la web. <em>(Si no tienes, indícalo para usar stock premium de alta conversión).</em></li>
+      </ul>
+    </div>
+
+    <div style={{ marginBottom: 16 }}>
+      <h4 style={{ fontSize: 18, fontWeight: 700, marginBottom: 8, color: "#222" }}>2. Contenidos y Estructura Comercial</h4>
+      <ul style={{ paddingLeft: 20, margin: 0, fontSize: 17, color: "#444" }}>
+        <li style={{ marginBottom: 6 }}><strong>[ ] Portafolio de Servicios/Productos:</strong> Documento de texto detallando qué vendes, cuáles son los beneficios principales de cada uno y sus respectivos precios o rangos.</li>
+        <li style={{ marginBottom: 6 }}><strong>[ ] Preguntas Frecuentes (FAQs):</strong> Las 5 preguntas que tus clientes siempre te hacen antes de comprar y las respuestas exactas que les das.</li>
+        <li style={{ marginBottom: 6 }}><strong>[ ] Prueba Social:</strong> Capturas de pantalla o textos de testimonios reales de tus clientes actuales con sus nombres o logos.</li>
+      </ul>
+    </div>
+
+    <div style={{ marginBottom: 24 }}>
+      <h4 style={{ fontSize: 18, fontWeight: 700, marginBottom: 8, color: "#222" }}>3. Accesos Técnicos y Conexiones</h4>
+      <ul style={{ paddingLeft: 20, margin: 0, fontSize: 17, color: "#444" }}>
+        <li style={{ marginBottom: 6 }}><strong>[ ] Dominio y Hosting:</strong> Credenciales de acceso al proveedor donde compraste el nombre de tu web (Ej: GoDaddy, Namecheap) si ya cuentas con uno.</li>
+        <li style={{ marginBottom: 6 }}><strong>[ ] WhatsApp del Negocio:</strong> Número de teléfono exacto que se conectará al Optimizador de Intención para recibir los leads calificados.</li>
+        <li style={{ marginBottom: 6 }}><strong>[ ] Accesos Publicitarios (Si aplica):</strong> Roles de administrador en tu Business Manager de Meta si vas a iniciar la fase de pauta de inmediato con nosotros.</li>
+      </ul>
+    </div>
+
+    <DocFooter />
+  </div>
+);
+
+// ══════════════════════════════════════════════
+// MAPA DE RENDERERS
+// ══════════════════════════════════════════════
+const RENDERERS = {
+  bienvenida: DocBienvenida,
+  propuesta: DocPropuesta,
+  contrato: DocContrato,
+  acta_inicio: DocActaInicio,
+  acta_entrega: DocActaEntrega,
+  factura: DocFactura,
+  requerimientos: DocRequerimientos,
+};
+
+// ══════════════════════════════════════════════
+// COMPONENTES DE FORMULARIO
+// ══════════════════════════════════════════════
+const Field = ({ label, value, onChange, type = "text", placeholder = "" }) => (
+  <div style={{ marginBottom: 10 }}>
+    <label style={{
+      display: "block", fontSize: 13, color: PL, marginBottom: 3,
+      textTransform: "uppercase", letterSpacing: 0.9, fontWeight: 600
+    }}>{label}</label>
+    {type === "textarea" ? (
+      <textarea value={value} onChange={e => onChange(e.target.value)}
+        placeholder={placeholder} rows={3}
+        style={{
+          width: "100%", background: "rgba(124,58,237,0.08)",
+          border: `1px solid ${BD}`, borderRadius: 5, color: TX,
+          padding: "7px 9px", fontSize: 17, resize: "vertical", fontFamily: "inherit"
+        }} />
+    ) : (
+      <input type={type} value={value} onChange={e => onChange(e.target.value)}
+        placeholder={placeholder}
+        style={{
+          width: "100%", background: "rgba(124,58,237,0.08)",
+          border: `1px solid ${BD}`, borderRadius: 5, color: TX,
+          padding: "7px 9px", fontSize: 17, fontFamily: "inherit"
+        }} />
+    )}
+  </div>
+);
+
+const Sec = ({ title, children }) => (
+  <div style={{
+    marginBottom: 12, padding: 11, background: "rgba(124,58,237,0.05)",
+    borderRadius: 7, border: `1px solid ${BD}`
+  }}>
+    <div style={{
+      fontSize: 12, color: PL, textTransform: "uppercase", letterSpacing: 1.6,
+      fontWeight: 700, marginBottom: 9
+    }}>{title}</div>
+    {children}
+  </div>
+);
+
+// ══════════════════════════════════════════════
+// AuditTrail Component for PDF legal verification
+const AuditTrail = ({ f }) => {
+  if (f.status !== "signed") return null;
+
+  return (
+    <div style={{
+      marginTop: 48,
+      paddingTop: 16,
+      borderTop: "2px dashed #DDD",
+      fontSize: 14,
+      color: "#555",
+      fontFamily: "'Sora',system-ui,sans-serif",
+      pageBreakBefore: "always"
+    }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+        <div style={{ fontWeight: 700, color: P, letterSpacing: 0.5, textTransform: "uppercase", fontSize: 13 }}>
+          🔒 Pista de Auditoría de Firma Electrónica
+        </div>
+        <div style={{ background: "#DCFCE7", color: "#166534", padding: "2px 8px", borderRadius: 12, fontSize: 11, fontWeight: 700 }}>
+          DOCUMENTO FIRMADO Y VERIFICADO
+        </div>
+      </div>
       
       <p style={{ marginBottom: 12, lineHeight: 1.5, color: "#666" }}>
         Este documento ha sido firmado electrónicamente de conformidad con la Ley 527 de 1999 de la República de Colombia. Los metadatos registrados a continuación garantizan la integridad, autenticidad y el no repudio del firmante.
@@ -1082,7 +1194,7 @@ export default function App() {
               </Sec>
             )}
 
-            
+
 
             {needFactura && (
               <>
