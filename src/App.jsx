@@ -38,6 +38,8 @@ const INIT = {
   repEmail: "hola@conectanodo.com", nit: "",
   clientName: "Nombre del cliente", clientCompany: "Empresa del cliente",
   clientEmail: "cliente@empresa.com", clientId: "", clientNiche: "Odontología Estética",
+  kitStandardDays: "10 a 15", kitUrgentDays: "5 a 7",
+  kitUrgentSurcharge: "30", kitFeedbackHours: "12",
   date: fechaHoy(), projectName: "Proyecto Nodo",
   service: "Pauta Digital con Meta Ads",
   description: "Gestión y optimización de campañas en Meta (Facebook e Instagram): estrategia de audiencias, creatividades y reportes mensuales de resultados.",
@@ -710,7 +712,7 @@ const DocRequerimientos = ({ f }) => (
     <h3 style={{ fontSize: 14, fontWeight: 700, color: P, marginTop: 24, marginBottom: 10 }}>📅 Esquemas de Entrega según Urgencia</h3>
     
     <div style={{ background: "#F5F3FF", border: "1px solid #DDD6FE", borderRadius: 8, padding: 14, marginBottom: 12 }}>
-      <h4 style={{ fontSize: 13, fontWeight: 700, marginBottom: 6, color: "#222" }}>Opción A: Flujo Estándar (10 a 15 Días Hábiles)</h4>
+      <h4 style={{ fontSize: 13, fontWeight: 700, marginBottom: 6, color: "#222" }}>Opción A: Flujo Estándar ({f.kitStandardDays || "10 a 15"} Días Hábiles)</h4>
       <ul style={{ paddingLeft: 20, margin: 0, fontSize: 12, color: "#444" }}>
         <li style={{ marginBottom: 4 }}><strong>Condición:</strong> El cliente entrega el 100% de la información solicitada en el Kit de Bienvenida en la reunión de Onboarding.</li>
         <li><strong>Ritmo:</strong> Desarrollo fluido y optimizado con asistencia de IA.</li>
@@ -718,10 +720,10 @@ const DocRequerimientos = ({ f }) => (
     </div>
 
     <div style={{ background: "#FFF0F2", border: "1px solid #FECDD3", borderRadius: 8, padding: 14, marginBottom: 24 }}>
-      <h4 style={{ fontSize: 13, fontWeight: 700, marginBottom: 6, color: "#9F1239" }}>Opción B: Flujo de Alta Urgencia (5 a 7 Días Hábiles)</h4>
+      <h4 style={{ fontSize: 13, fontWeight: 700, marginBottom: 6, color: "#9F1239" }}>Opción B: Flujo de Alta Urgencia ({f.kitUrgentDays || "5 a 7"} Días Hábiles)</h4>
       <ul style={{ paddingLeft: 20, margin: 0, fontSize: 12, color: "#444" }}>
-        <li style={{ marginBottom: 4 }}><strong>Condición:</strong> Requiere un <strong>recargo del 30%</strong> sobre el valor base del proyecto.</li>
-        <li><strong>Ritmo:</strong> Prioridad absoluta en el pipeline de desarrollo de NODO. El cliente debe garantizar feedback y aprobaciones de diseño/copys en menos de 12 horas hábiles.</li>
+        <li style={{ marginBottom: 4 }}><strong>Condición:</strong> Requiere un <strong>recargo del {f.kitUrgentSurcharge || "30"}%</strong> sobre el valor base del proyecto.</li>
+        <li><strong>Ritmo:</strong> Prioridad absoluta en el pipeline de desarrollo de NODO. El cliente debe garantizar feedback y aprobaciones de diseño/copys en menos de {f.kitFeedbackHours || "12"} horas hábiles.</li>
       </ul>
     </div>
 
@@ -1080,6 +1082,7 @@ export default function App() {
   const needFinancial = ["propuesta", "contrato"].includes(doc);
   const needDates = ["contrato", "acta_inicio"].includes(doc);
   const needFactura = doc === "factura";
+  const needKit = doc === "requerimientos";
 
   if (isLoadingDoc) {
     return (
@@ -1196,6 +1199,15 @@ export default function App() {
               <Sec title="Fechas">
                 <Field label="Fecha de inicio" value={f.startDate} onChange={set("startDate")} placeholder="1 de junio de 2025" />
                 <Field label="Fecha de entrega" value={f.endDate} onChange={set("endDate")} placeholder="30 de junio de 2025" />
+              </Sec>
+            )}
+
+            {needKit && (
+              <Sec title="Opciones del Kit">
+                <Field label="Días Opción Estándar" value={f.kitStandardDays} onChange={set("kitStandardDays")} placeholder="10 a 15" />
+                <Field label="Días Opción Urgente" value={f.kitUrgentDays} onChange={set("kitUrgentDays")} placeholder="5 a 7" />
+                <Field label="Recargo Urgencia (%)" value={f.kitUrgentSurcharge} onChange={set("kitUrgentSurcharge")} placeholder="30" />
+                <Field label="Feedback Urgente (Horas)" value={f.kitFeedbackHours} onChange={set("kitFeedbackHours")} placeholder="12" />
               </Sec>
             )}
 
